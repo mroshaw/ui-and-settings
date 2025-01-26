@@ -1,0 +1,18 @@
+{
+  "name": "com.daftapplegames.ui-and-settings",
+  "version": "1.0.0",
+  "displayName": "UI Extensions and Settings",
+  "description": "Base UI features and game settings functionality",
+  "unity": "6000.0",
+  "documentationUrl": "https://example.com/",
+  "changelogUrl": "https://example.com/changelog.html",
+  "licensesUrl": "https://example.com/licensing.html",
+  "keywords": [
+    "Daft Apple Games"
+  ],
+  "author": {
+    "name": "Oli Ollerenshaw",
+    "email": "oli@mroshaw.co.uk",
+    "url": ""
+  }
+}
