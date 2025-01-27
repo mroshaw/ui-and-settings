@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace DaftAppleGames.Settings.Display
 {
+    [CreateAssetMenu(fileName = "MonitorSettingSO", menuName = "Daft Apple Games/Settings/Display/Monitor Setting", order = 1)]
     [Serializable]
     public class MonitorSetting : OptionSetting
     {
@@ -18,7 +19,7 @@ namespace DaftAppleGames.Settings.Display
             return "Monitor";
         }
 
-        protected override void Apply()
+        public override void Apply()
         {
 
         }

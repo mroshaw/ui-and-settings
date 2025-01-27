@@ -443,6 +443,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5432592634774686835, guid: fdb7846b6a76fd647a978b0e4821dc8f, type: 3}
+      propertyPath: settingId
+      value: Monitor
+      objectReference: {fileID: 0}
     - target: {fileID: 8190989396897229595, guid: fdb7846b6a76fd647a978b0e4821dc8f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -594,68 +598,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadOnStart: 1
-  displaySettings:
-    fullScreen:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    screenResolution:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    frameRate:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    monitor:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    vsync:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    textureResolution:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
-  audioSettings:
-    masterVolume:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
-      audioMixer: {fileID: 24100000, guid: f6008d348b87d5348997ced517484349, type: 2}
-    musicVolume:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
-      audioMixer: {fileID: 24100000, guid: f6008d348b87d5348997ced517484349, type: 2}
-    soundFXVolume:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
-      audioMixer: {fileID: 24100000, guid: f6008d348b87d5348997ced517484349, type: 2}
-    ambientFXVolume:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
-      audioMixer: {fileID: 24100000, guid: f6008d348b87d5348997ced517484349, type: 2}
-  qualitySettings:
-    qualityPreset:
-      value: 0
-      valueChangedEvent:
-        m_PersistentCalls:
-          m_Calls: []
+  boolSettings:
+  - {fileID: 11400000, guid: dfb488a4f45af7c4db5eca0aab453e52, type: 2}
+  floatSettings:
+  - {fileID: 11400000, guid: 94e1a1ab9d883fe449fbb679b51a3aa1, type: 2}
+  - {fileID: 11400000, guid: 1bacce3c20e8e7248ac57fd6f0feb90c, type: 2}
+  - {fileID: 11400000, guid: 92dea8a92b3a1ac4ca3e6fe9c0bd2150, type: 2}
+  - {fileID: 11400000, guid: abed563ab560d8e4c8aed05185472841, type: 2}
+  intSettings: []
+  optionSettings:
+  - {fileID: 11400000, guid: ad71705214d9c8a4b879c329033de4d6, type: 2}
+  - {fileID: 11400000, guid: a37bf53dc19f11549938095edc6ddb9c, type: 2}
+  - {fileID: 11400000, guid: ebebc771d0baff842957d30e17604669, type: 2}
 --- !u!4 &755508151
 Transform:
   m_ObjectHideFlags: 0
@@ -1034,7 +988,6 @@ RectTransform:
   - {fileID: 258646273}
   - {fileID: 1839040541}
   - {fileID: 566046932}
-  - {fileID: 2129450915}
   m_Father: {fileID: 1715717423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -1282,6 +1235,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8746739731780104523, guid: c1c38fef6fc7cad4d8a92b9b647827e3, type: 3}
+      propertyPath: settingId
+      value: SoundFXVolume
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1353,20 +1310,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aeb18b28bfe4c14282e4e084d2a82ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displaySettingsUI:
-    settingsManager: {fileID: 755508150}
-    fullScreenUI: {fileID: 258646276}
-    monitorUI: {fileID: 566046933}
-    resolutionUI: {fileID: 1839040542}
-  audioSettingsUI:
-    settingsManager: {fileID: 755508150}
-    masterVolumeUI: {fileID: 1278720926}
-    musicVolumeUI: {fileID: 1553088200}
-    soundFXVolumeUI: {fileID: 1227324117}
-    ambientFXVolumeUI: {fileID: 2075478790}
-  qualitySettingsUI:
-    settingsManager: {fileID: 755508150}
-    qualityPresetUI: {fileID: 2083313986}
+  settingsManager: {fileID: 755508150}
+  settingUis:
+  - {fileID: 258646276}
+  - {fileID: 1839040542}
+  - {fileID: 566046933}
+  - {fileID: 1278720926}
+  - {fileID: 1553088200}
+  - {fileID: 1227324117}
+  - {fileID: 2075478790}
+  - {fileID: 2083313986}
+  saveButton: {fileID: 1950653624}
+  cancelButton: {fileID: 1659849962}
 --- !u!4 &1287943184
 Transform:
   m_ObjectHideFlags: 0
@@ -1795,6 +1750,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8746739731780104523, guid: c1c38fef6fc7cad4d8a92b9b647827e3, type: 3}
+      propertyPath: settingId
+      value: MusicVolume
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1814,6 +1773,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91cdbf2f2ae0ef14a9ced869c62a2801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1659849962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2442756625962141187, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
+  m_PrefabInstance: {fileID: 808368951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1715717422
@@ -2126,6 +2096,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5432592634774686835, guid: fdb7846b6a76fd647a978b0e4821dc8f, type: 3}
+      propertyPath: settingId
+      value: ScreenResolution
+      objectReference: {fileID: 0}
     - target: {fileID: 8190989396897229595, guid: fdb7846b6a76fd647a978b0e4821dc8f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2365,6 +2339,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
   m_PrefabInstance: {fileID: 1950653622}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1950653624 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2442756625962141187, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
+  m_PrefabInstance: {fileID: 1950653622}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2015752902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2611,6 +2596,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8746739731780104523, guid: c1c38fef6fc7cad4d8a92b9b647827e3, type: 3}
+      propertyPath: settingId
+      value: AmbientFXVolume
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2684,124 +2673,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &2129450914
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1166321957}
-    m_Modifications:
-    - target: {fileID: 297990523590544306, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_Name
-      value: Button 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 622108402335016012, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_text
-      value: Button 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 622108402335016012, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_fontSize
-      value: 44.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 622108402335016012, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 622108402335016012, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
---- !u!224 &2129450915 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7183138305405960344, guid: a9dac814b6ca14745b5dd83b439fff07, type: 3}
-  m_PrefabInstance: {fileID: 2129450914}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2140507517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,6 +2811,10 @@ PrefabInstance:
     - target: {fileID: 3723384714414875929, guid: fdb7846b6a76fd647a978b0e4821dc8f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432592634774686835, guid: fdb7846b6a76fd647a978b0e4821dc8f, type: 3}
+      propertyPath: settingId
+      value: QualityPreset
       objectReference: {fileID: 0}
     - target: {fileID: 8190989396897229595, guid: fdb7846b6a76fd647a978b0e4821dc8f, type: 3}
       propertyPath: m_Pivot.x
@@ -3186,6 +3061,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8746739731780104523, guid: c1c38fef6fc7cad4d8a92b9b647827e3, type: 3}
+      propertyPath: settingId
+      value: MasterVolume
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3199,6 +3078,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1166321957}
     m_Modifications:
+    - target: {fileID: 697612857299258581, guid: ea1a09fadcf13d448bda99bd160c217a, type: 3}
+      propertyPath: settingId
+      value: FullScreen
+      objectReference: {fileID: 0}
     - target: {fileID: 2024469576214166354, guid: ea1a09fadcf13d448bda99bd160c217a, type: 3}
       propertyPath: m_Name
       value: Full Screen Toggle Setting

@@ -17,7 +17,7 @@ namespace DaftAppleGames.Settings.Display
             return "Texture Resolution";
         }
 
-        protected override void Apply()
+        public override void Apply()
         {
 
         }

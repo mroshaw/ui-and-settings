@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace DaftAppleGames.Settings.Display
 {
+    [CreateAssetMenu(fileName = "ScreenResolutionVolumeSettingSO", menuName = "Daft Apple Games/Settings/Display/Screen Resolution Setting", order = 1)]
     [Serializable]
     public class ScreenResolutionSetting : OptionSetting
     {
@@ -17,7 +18,7 @@ namespace DaftAppleGames.Settings.Display
             return "Resolution";
         }
 
-        protected override void Apply()
+        public override void Apply()
         {
             Resolution[] resolutions = Screen.resolutions;
             Screen.SetResolution(resolutions[Value].width, resolutions[Value].height, Screen.fullScreen);

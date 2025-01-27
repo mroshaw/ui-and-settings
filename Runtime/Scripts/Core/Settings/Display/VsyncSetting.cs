@@ -16,7 +16,7 @@ namespace DaftAppleGames.Settings.Display
             return "V Sync";
         }
 
-        protected override void Apply()
+        public override void Apply()
         {
 
         }

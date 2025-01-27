@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace DaftAppleGames.Settings.Quality
 {
+    [CreateAssetMenu(fileName = "QualityPresetSettingSO", menuName = "Daft Apple Games/Settings/Quality/Quality Preset Setting", order = 1)]
     [Serializable]
     public class QualityPresetSetting : OptionSetting
     {
@@ -17,7 +18,7 @@ namespace DaftAppleGames.Settings.Quality
             return "Quality Preset";
         }
 
-        protected override void Apply()
+        public override void Apply()
         {
 
         }

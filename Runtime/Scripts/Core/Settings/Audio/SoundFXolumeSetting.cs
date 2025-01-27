@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 
 namespace DaftAppleGames.Settings.Audio
 {
+    [CreateAssetMenu(fileName = "SoundFXVolumeSettingSO", menuName = "Daft Apple Games/Settings/Audio/Sound FX Volume Setting", order = 1)]
     [Serializable]
     public class SoundFXVolumeSetting : MixerGroupVolumeSetting
     {

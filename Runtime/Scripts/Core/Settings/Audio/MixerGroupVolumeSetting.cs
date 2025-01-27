@@ -6,7 +6,7 @@ namespace DaftAppleGames.Settings.Audio
     [Serializable]
     public abstract class MixerGroupVolumeSetting : FloatSetting
     {
-        protected override void Apply()
+        public override void Apply()
         {
             AudioMixer mixer = GetAudioMixer();
             string mixerGroupParameter = GetAudioMixerGroupParameter();

@@ -26,12 +26,12 @@ namespace DaftAppleGames.Settings
             Apply();
         }
 
-        protected virtual void Save()
+        public override void Save()
         {
             PlayerPrefs.SetInt(GetStorageName(), Value ? 1 : 0);
         }
 
-        protected override void Load()
+        public override void Load()
         {
             Value = PlayerPrefs.HasKey(GetStorageName()) ? PlayerPrefs.GetInt(GetStorageName()) != 0 : GetDefault();
         }

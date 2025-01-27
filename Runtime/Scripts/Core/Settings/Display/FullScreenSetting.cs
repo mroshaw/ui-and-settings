@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace DaftAppleGames.Settings.Display
 {
+    [CreateAssetMenu(fileName = "FullScreenSettingSO", menuName = "Daft Apple Games/Settings/Display/Full Screen Setting", order = 1)]
     [Serializable]
     public class FullScreenSetting : BoolSetting
     {
@@ -16,7 +17,7 @@ namespace DaftAppleGames.Settings.Display
             return "Full Screen";
         }
 
-        protected override void Apply()
+        public override void Apply()
         {
             Screen.fullScreen = Value;
         }
