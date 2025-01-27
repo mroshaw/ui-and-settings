@@ -7,6 +7,13 @@
   "documentationUrl": "https://example.com/",
   "changelogUrl": "https://example.com/changelog.html",
   "licensesUrl": "https://example.com/licensing.html",
+  "samples": [
+    {
+      "displayName": "Demo Scenes",
+      "description": "Unity 6 HDRP scenes demonstrating the features of the package.",
+      "path": "Samples/DemoScenes"
+    }
+  ],
   "keywords": [
     "Daft Apple Games"
   ],
