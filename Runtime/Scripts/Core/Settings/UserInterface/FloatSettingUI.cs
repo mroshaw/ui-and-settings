@@ -30,5 +30,11 @@ namespace DaftAppleGames.Settings
         {
             slider.SetValueWithoutNotify(value);
         }
+
+        public void SetSliderMinMax(float min, float max)
+        {
+            slider.minValue = min;
+            slider.maxValue = max;
+        }
     }
 }

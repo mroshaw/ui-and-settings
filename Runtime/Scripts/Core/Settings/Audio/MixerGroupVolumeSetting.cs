@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.Audio;
 
 namespace DaftAppleGames.Settings.Audio
@@ -10,23 +11,32 @@ namespace DaftAppleGames.Settings.Audio
         {
             AudioMixer mixer = GetAudioMixer();
             string mixerGroupParameter = GetAudioMixerGroupParameter();
-            mixer.SetFloat(mixerGroupParameter, Value);
+            mixer.SetFloat(mixerGroupParameter, ValueToVolume(Value));
+        }
+
+        private float ValueToVolume(float value)
+        {
+            return Mathf.Log10(value) * 20;
+        }
+
+        private float VolumeToValue(float volume)
+        {
+            return Mathf.Pow(10f, volume / 20f);
         }
 
         protected abstract AudioMixer GetAudioMixer();
         protected abstract string GetAudioMixerGroupParameter();
-
         protected override float GetDefault()
         {
             return 1.0f;
         }
 
-        protected override float GetMinValue()
+        public override float GetMinValue()
         {
-            return 0.0f;
+            return 0.01f;
         }
 
-        protected override float GetMaxValue()
+        public override float GetMaxValue()
         {
             return 1.0f;
         }

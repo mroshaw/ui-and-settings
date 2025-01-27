@@ -111,6 +111,9 @@ namespace DaftAppleGames.Settings
 
             floatSettingUI.SetLabel(floatSetting.GetDisplayName());
 
+            // Configure slider
+            floatSettingUI.SetSliderMinMax(floatSetting.GetMinValue(), floatSetting.GetMaxValue());
+
             // When UI changes, update the settings
             floatSettingUI.sliderValueChangedEvent.RemoveListener(floatSetting.SetValueNoEvent);
             floatSettingUI.sliderValueChangedEvent.AddListener(floatSetting.SetValueNoEvent);
@@ -167,22 +170,6 @@ namespace DaftAppleGames.Settings
             boolSetting.valueChangedEvent.RemoveListener(boolSettingUI.SetToggleValue);
             boolSetting.valueChangedEvent.AddListener(boolSettingUI.SetToggleValue);
         }
-
-        public void LoadSettings()
-        {
-
-        }
-
-        public void ApplySettings()
-        {
-
-        }
-
-        public void SaveSettings()
-        {
-
-        }
-
         #endregion
     }
 }

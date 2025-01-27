@@ -15,7 +15,6 @@ namespace DaftAppleGames.Settings
             get => value;
             set
             {
-                if (Mathf.Approximately(this.value, value)) return;
                 this.value = value;
                 valueChangedEvent.Invoke(value);
                 Apply();
@@ -40,8 +39,8 @@ namespace DaftAppleGames.Settings
 
         protected abstract float GetDefault();
 
-        protected abstract float GetMinValue();
+        public abstract float GetMinValue();
 
-        protected abstract float GetMaxValue();
+        public abstract float GetMaxValue();
     }
 }

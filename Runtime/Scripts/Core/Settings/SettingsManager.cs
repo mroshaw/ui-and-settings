@@ -46,10 +46,25 @@ namespace DaftAppleGames.Settings
         {
             if (loadOnStart)
             {
-                LoadSettings();
+                LoadAndApplySettings();
             }
         }
         #endregion
+
+        #region Class methods
+
+        private Setting GetSetting(List<Setting> settingsList, string settingId)
+        {
+            foreach (Setting setting in settingsList)
+            {
+                if (setting.settingId == settingId)
+                {
+                    return setting;
+                }
+            }
+
+            return null;
+        }
 
         public BoolSetting GetBoolSetting(string settingId)
         {
@@ -69,40 +84,12 @@ namespace DaftAppleGames.Settings
             return GetSetting(settings, settingId) as IntSetting;
         }
 
-
         public OptionSetting GetOptionSetting(string settingId)
         {
             List<Setting> settings = optionSettings.Cast<Setting>().ToList();
             return GetSetting(settings, settingId) as OptionSetting;
         }
 
-
-        private Setting GetSetting(List<Setting> settingsList, string settingId)
-        {
-            foreach (Setting setting in settingsList)
-            {
-                if (setting.settingId == settingId)
-                {
-                    return setting;
-                }
-            }
-
-            return null;
-        }
-
-        #region Update
-        private void Update()
-        {
-            
-        }
-
-        private void LateUpdate()
-        {
-            
-        }
-        #endregion
-
-        #region Class methods
 
         public void LoadAndApplySettings()
         {
