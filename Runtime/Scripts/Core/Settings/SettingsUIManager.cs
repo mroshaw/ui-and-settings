@@ -46,7 +46,7 @@ namespace DaftAppleGames.Settings
         [Button("Refresh UI Settings")]
         private void RefreshUISettings()
         {
-            settingUis = GetComponentsInChildren<SettingUI>().ToList();
+            settingUis = GetComponentsInChildren<SettingUI>(true).ToList();
         }
 
         [Button("Set UI Labels")]

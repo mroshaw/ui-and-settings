@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace DaftAppleGames.Settings.Display
 {
+    [CreateAssetMenu(fileName = "VSyncSettingSO", menuName = "Daft Apple Games/Settings/Display/V Sync Setting", order = 1)]
     [Serializable]
     public class VsyncSetting : BoolSetting
     {
@@ -18,12 +19,12 @@ namespace DaftAppleGames.Settings.Display
 
         public override void Apply()
         {
-
+            QualitySettings.vSyncCount = Value ? 1 : 0;
         }
 
         protected override bool GetDefault()
         {
-            return true;
+            return QualitySettings.vSyncCount == 1;
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace DaftAppleGames.Settings.Display
 {
+    [CreateAssetMenu(fileName = "TextureResolutionSettingSO", menuName = "Daft Apple Games/Settings/Display/Texture Resolution Setting", order = 1)]
     [Serializable]
     public class TextureResolutionSetting : OptionSetting
     {
@@ -19,7 +20,7 @@ namespace DaftAppleGames.Settings.Display
 
         public override void Apply()
         {
-
+            QualitySettings.globalTextureMipmapLimit = Value;
         }
 
         protected override int GetDefault()
@@ -29,7 +30,7 @@ namespace DaftAppleGames.Settings.Display
 
         public override List<string> GetOptions()
         {
-            List<string> options = new();
+            List<string> options = new() { "Full", "Half", "Quarter", "Eighth" };
             return options;
         }
     }

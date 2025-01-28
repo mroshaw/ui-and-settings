@@ -46,6 +46,8 @@ namespace DaftAppleGames.Settings
                 allSettings.AddRange(floatSettings);
                 allSettings.AddRange(intSettings);
                 allSettings.AddRange(optionSettings);
+
+                allSettings.Sort((a, b) => a.order.CompareTo(b.order));
         }
 
         private void Start()

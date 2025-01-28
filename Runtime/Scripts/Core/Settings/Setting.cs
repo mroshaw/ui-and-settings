@@ -7,6 +7,8 @@ namespace DaftAppleGames.Settings
     public abstract class Setting : ScriptableObject
     {
         public string settingId;
+        public int order;
+        
         protected string StorageName => GetStorageName();
         public string DisplayName => GetDisplayName();
 

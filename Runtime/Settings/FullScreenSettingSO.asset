@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FullScreenSettingSO
   m_EditorClassIdentifier: 
   settingId: FullScreen
+  order: -1
   value: 1
   valueChangedEvent:
     m_PersistentCalls:

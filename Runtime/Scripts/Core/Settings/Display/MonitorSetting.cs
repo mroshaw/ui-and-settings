@@ -9,6 +9,14 @@ namespace DaftAppleGames.Settings.Display
     [Serializable]
     public class MonitorSetting : OptionSetting
     {
+        private List<DisplayInfo> _displayInfos;
+
+        private void OnEnable()
+        {
+            _displayInfos = new();
+            Screen.GetDisplayLayout(_displayInfos);
+        }
+
         protected override string GetStorageName()
         {
             return "Monitor";
@@ -21,9 +29,13 @@ namespace DaftAppleGames.Settings.Display
 
         public override void Apply()
         {
-            #if !UNITY_EDITOR
-            UnityEngine.Display.displays[Value].Activate();
-            #endif
+            /*
+            if (!UnityEngine.Display.displays[Value].active)
+            {
+                UnityEngine.Display.displays[Value].Activate();
+            }
+            */
+            Screen.MoveMainWindowTo(_displayInfos[Value], Vector2Int.zero);
         }
 
         protected override int GetDefault()
@@ -35,13 +47,11 @@ namespace DaftAppleGames.Settings.Display
         {
             List<string> options = new();
 
-            List<DisplayInfo> displayLayout = new List<DisplayInfo>();
-            Screen.GetDisplayLayout(displayLayout);
-
-            foreach (DisplayInfo display in displayLayout)
+            foreach (DisplayInfo display in _displayInfos)
             {
-                options.Add(display.name);
+                options.Add($"{display.name} ({display.width}x{display.height})");
             }
+
             return options;
         }
     }
