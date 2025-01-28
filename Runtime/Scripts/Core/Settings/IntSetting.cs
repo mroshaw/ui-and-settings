@@ -9,15 +9,13 @@ namespace DaftAppleGames.Settings
     {
         [SerializeField] private int value;
         public UnityEvent<int> valueChangedEvent;
-        protected int Value
+        protected int Value => value;
+
+        public void SetValue(int newValue)
         {
-            get => value;
-            set
-            {
-                if (this.value == value) return;
-                this.value = value;
-                valueChangedEvent.Invoke(value);
-            }
+            value = newValue;
+            valueChangedEvent.Invoke(value);
+            Apply();
         }
 
         public void SetValueNoEvent(int newValue)
@@ -33,7 +31,7 @@ namespace DaftAppleGames.Settings
 
         public override void Load()
         {
-            Value = PlayerPrefs.HasKey(GetStorageName()) ? PlayerPrefs.GetInt(GetStorageName()) : GetDefault();
+            SetValue(PlayerPrefs.HasKey(GetStorageName()) ? PlayerPrefs.GetInt(GetStorageName()) : GetDefault());
         }
 
         protected abstract int GetDefault();

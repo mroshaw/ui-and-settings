@@ -362,7 +362,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2196055909119006546}
         m_TargetAssemblyTypeName: DaftAppleGames.Darskerry.Core.UserInterface.BaseUiWindow,
           DaftAppleGames.Darskerry.Core
-        m_MethodName: HideUi
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -447,7 +447,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2196055909119006546}
         m_TargetAssemblyTypeName: DaftAppleGames.Darskerry.Core.UserInterface.BaseUiWindow,
           DaftAppleGames.Darskerry.Core
-        m_MethodName: ShowUi
+        m_MethodName: Open
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -476,7 +476,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2196055909119006546}
         m_TargetAssemblyTypeName: DaftAppleGames.Darskerry.Core.UserInterface.BaseUiWindow,
           DaftAppleGames.Darskerry.Core
-        m_MethodName: HideUi
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

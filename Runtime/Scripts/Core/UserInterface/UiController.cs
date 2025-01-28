@@ -9,7 +9,7 @@ namespace DaftAppleGames.UserInterface
     /// </summary>
     public class UiController : Singleton<UiController>
     {
-        private static List<BaseUiWindow> _windows = new();
+        private static List<UiWindow> _windows = new();
 
         protected override void Awake()
         {
@@ -30,7 +30,7 @@ namespace DaftAppleGames.UserInterface
         {
             string result = "";
             
-            foreach (BaseUiWindow window in _windows)
+            foreach (UiWindow window in _windows)
             {
                 if (window.IsUiOpen)
                 {
@@ -43,12 +43,12 @@ namespace DaftAppleGames.UserInterface
             return result;
         }
         
-        public void RegisterUiWindow(BaseUiWindow window)
+        public void RegisterUiWindow(UiWindow window)
         {
             _windows.Add(window);
         }
 
-        public void UnRegisterUiWindow(BaseUiWindow window)
+        public void UnRegisterUiWindow(UiWindow window)
         {
             _windows.Remove(window);
         }

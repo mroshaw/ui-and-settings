@@ -21,7 +21,9 @@ namespace DaftAppleGames.Settings.Display
 
         public override void Apply()
         {
-
+            #if !UNITY_EDITOR
+            UnityEngine.Display.displays[Value].Activate();
+            #endif
         }
 
         protected override int GetDefault()
@@ -32,10 +34,13 @@ namespace DaftAppleGames.Settings.Display
         public override List<string> GetOptions()
         {
             List<string> options = new();
-            UnityEngine.Display[] displays = UnityEngine.Display.displays;
-            foreach (UnityEngine.Display display in displays)
+
+            List<DisplayInfo> displayLayout = new List<DisplayInfo>();
+            Screen.GetDisplayLayout(displayLayout);
+
+            foreach (DisplayInfo display in displayLayout)
             {
-                options.Add(display.ToString());
+                options.Add(display.name);
             }
             return options;
         }

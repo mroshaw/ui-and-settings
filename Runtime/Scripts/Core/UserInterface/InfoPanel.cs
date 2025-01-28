@@ -10,22 +10,34 @@ using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface
 {
-    public class InfoPanel : BaseUiWindow
+    public class InfoPanel : UiWindow
     {
         // Public serializable properties
         [BoxGroup("UI Settings")] public TMP_Text headingText;
         [BoxGroup("UI Settings")] public TMP_Text contentText;
         [BoxGroup("UI Settings")] public Image image;
 
+        [BoxGroup("UI Settings")] [SerializeField] private Button continueButton;
+
         [BoxGroup("UI Settings")] public Image[] inlineImages;
 
         [Header("UI Proxy Events")]
         public UnityEvent onContinueButtonClickedEvent;
-        
+
+        protected override void InitHandlers()
+        {
+            continueButton.onClick.AddListener(ContinueButtonClick);
+        }
+
+        protected override void DeInitHandlers()
+        {
+            continueButton.onClick.RemoveListener(ContinueButtonClick);
+        }
+
         /// <summary>
         /// Proxy for the Continue button click event
         /// </summary>
-        public void ContinueButtonClickedProxy()
+        private void ContinueButtonClick()
         {
             onContinueButtonClickedEvent.Invoke();
         }

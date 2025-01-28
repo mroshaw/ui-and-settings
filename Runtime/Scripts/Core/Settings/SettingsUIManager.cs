@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using DaftAppleGames.UserInterface;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -10,7 +12,7 @@ using DaftAppleGames.Attributes;
 
 namespace DaftAppleGames.Settings
 {
-    public class SettingsUIManager : MonoBehaviour
+    public class SettingsUIManager : UiWindow
     {
         #region Class Variables
 
@@ -18,27 +20,22 @@ namespace DaftAppleGames.Settings
         [BoxGroup("UI Settings")] [SerializeField] private List<SettingUI> settingUis;
         [BoxGroup("UI")] [SerializeField] private Button saveButton;
         [BoxGroup("UI")] [SerializeField] private Button cancelButton;
+
+        [BoxGroup("UI Events")] public UnityEvent onSaveButtonClickedEvent;
+        [BoxGroup("UI Events")] public UnityEvent onCancelButtonClickedEvent;
+
         #endregion
 
         #region Startup
-        private void OnEnable()
-        {
-
-        }
-
-        private void OnDisable()
-        {
-        }
-
-        private void Awake()
+        protected override void InitHandlers()
         {
             InitUiMapping();
             InitButtons();
         }
 
-        private void Start()
+        protected override void DeInitHandlers()
         {
-            
+            DeInitButtons();
         }
         #endregion
 
@@ -55,22 +52,42 @@ namespace DaftAppleGames.Settings
         [Button("Set UI Labels")]
         private void SetUILabels()
         {
-
+            foreach (SettingUI settingUI in settingUis)
+            {
+                Setting setting = settingsManager.GetAnySetting(settingUI.settingId);
+                if (setting)
+                {
+                    settingUI.SetLabel(setting.GetDisplayName());
+                }
+            }
         }
 #endif
-
         private void InitButtons()
         {
-
-            saveButton.onClick.AddListener(settingsManager.SaveSettings);
-            cancelButton.onClick.AddListener(settingsManager.LoadSettings);
-
+            saveButton.onClick.AddListener(SaveButtonClicked);
+            cancelButton.onClick.AddListener(CancelButtonClicked);
         }
 
         private void DeInitButtons()
         {
-            saveButton.onClick.RemoveListener(settingsManager.SaveSettings);
+            saveButton.onClick.RemoveListener(SaveButtonClicked);
+            cancelButton.onClick.RemoveListener(CancelButtonClicked);
         }
+
+        private void SaveButtonClicked()
+        {
+            settingsManager.SaveSettings();
+            onSaveButtonClickedEvent?.Invoke();
+            Close();
+        }
+
+        private void CancelButtonClicked()
+        {
+            settingsManager.LoadSettings();
+            onCancelButtonClickedEvent?.Invoke();
+            Close();
+        }
+
 
         private void InitUiMapping()
         {

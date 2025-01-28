@@ -36,10 +36,16 @@ namespace DaftAppleGames.Settings
 
         private void Awake()
         {
-            allSettings = new List<Setting>();
-            allSettings.AddRange(boolSettings);
-            allSettings.AddRange(floatSettings);
-            allSettings.AddRange(intSettings);
+            RefreshAllSettings();
+        }
+
+        private void RefreshAllSettings()
+        {
+                allSettings = new List<Setting>();
+                allSettings.AddRange(boolSettings);
+                allSettings.AddRange(floatSettings);
+                allSettings.AddRange(intSettings);
+                allSettings.AddRange(optionSettings);
         }
 
         private void Start()
@@ -52,6 +58,19 @@ namespace DaftAppleGames.Settings
         #endregion
 
         #region Class methods
+
+        internal Setting GetAnySetting(string settingId)
+        {
+            RefreshAllSettings();
+            foreach (Setting setting in allSettings)
+            {
+                if (setting.settingId == settingId)
+                {
+                    return setting;
+                }
+            }
+            return null;
+        }
 
         private Setting GetSetting(List<Setting> settingsList, string settingId)
         {

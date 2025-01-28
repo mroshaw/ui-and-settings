@@ -77,7 +77,7 @@ namespace DaftAppleGames.UserInterface
                 {
                     _infoPanel.SetImage(infoPanelContent.image);
                 }
-                _infoPanel.ShowUi();
+                _infoPanel.Open();
                 IsDone = true;
             }            
         }

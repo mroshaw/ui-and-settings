@@ -14,15 +14,15 @@ namespace DaftAppleGames.UserInterface
     /// <summary>
     /// Class to underpin all UI window components
     /// </summary>
-    public class BaseUiWindow : MonoBehaviour
+    public abstract class UiWindow : MonoBehaviour
     {
         [BoxGroup("Window UI Settings")] [SerializeField] private Canvas uiCanvas;
         [BoxGroup("Window UI Settings")] [SerializeField] private bool defaultUiState;
         [BoxGroup("Window UI Settings")] [SerializeField] private GameObject startSelectedGameObject;
         [BoxGroup("Window UI Settings")] [SerializeField] private float fadeTimeInSeconds=2.0f;
         [BoxGroup("Debug")] [SerializeField] private bool isUiOpen;
-        [FoldoutGroup("Show Events")] [SerializeField] private UnityEvent onUiShowEvent;
-        [FoldoutGroup("Hide Events")] [SerializeField] private UnityEvent onUiHideEvent;
+        [FoldoutGroup("Show Events")] [SerializeField] private UnityEvent onOpenEvent;
+        [FoldoutGroup("Hide Events")] [SerializeField] private UnityEvent onCloseEvent;
 
         public bool IsUiOpen => isUiOpen;
 
@@ -34,11 +34,26 @@ namespace DaftAppleGames.UserInterface
 
         private CanvasGroup _uiCanvasGroup;
 
-        private void OnEnable()
+        #region Startup
+        protected virtual void OnEnable()
         {
             // Subscribe to input changed
             StartCoroutine(FindPlayerInputAsync());
+            InitHandlers();
         }
+
+        protected virtual void OnDisable()
+        {
+            if (_playerInput)
+            {
+                _playerInput.controlsChangedEvent.RemoveListener(ControlSchemeChangedHandler);
+            }
+            DeInitHandlers();
+        }
+
+        protected abstract void InitHandlers();
+
+        protected abstract void DeInitHandlers();
 
         private IEnumerator FindPlayerInputAsync()
         {
@@ -49,14 +64,6 @@ namespace DaftAppleGames.UserInterface
             }
             _playerInput.controlsChangedEvent.RemoveListener(ControlSchemeChangedHandler);
             _playerInput.controlsChangedEvent.AddListener(ControlSchemeChangedHandler);
-        }
-
-        private void OnDisable()
-        {
-            if (_playerInput)
-            {
-                _playerInput.controlsChangedEvent.RemoveListener(ControlSchemeChangedHandler);
-            }
         }
 
         public virtual void Awake()
@@ -89,7 +96,11 @@ namespace DaftAppleGames.UserInterface
             {
                 UiController.Instance.UnRegisterUiWindow(this);
             }
+
+            DeInitHandlers();
         }
+
+        #endregion
 
         private void ControlSchemeChangedHandler(PlayerInput playerInput)
         {
@@ -122,7 +133,7 @@ namespace DaftAppleGames.UserInterface
             SetUiState(!isUiOpen, true);
         }
 
-        public virtual void ShowUi()
+        public virtual void Open()
         {
             if (_uiCanvasGroup)
             {
@@ -133,7 +144,7 @@ namespace DaftAppleGames.UserInterface
             SetUiState(true, true);
         }
 
-        public virtual void HideUi()
+        public virtual void Close()
         {
             if (_uiCanvasGroup)
             {
@@ -193,7 +204,7 @@ namespace DaftAppleGames.UserInterface
 
                 if (triggerEvents)
                 {
-                    onUiShowEvent.Invoke();
+                    onOpenEvent.Invoke();
                 }
             }
             else
@@ -207,7 +218,7 @@ namespace DaftAppleGames.UserInterface
 
                 if (triggerEvents)
                 {
-                    onUiHideEvent.Invoke();
+                    onCloseEvent.Invoke();
                 }
             }
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace DaftAppleGames.Settings.Quality
@@ -20,17 +21,22 @@ namespace DaftAppleGames.Settings.Quality
 
         public override void Apply()
         {
-
+            QualitySettings.SetQualityLevel(Value);
         }
 
         protected override int GetDefault()
         {
-            return 0;
+            return QualitySettings.names.ToList().IndexOf("High Fidelity");;
         }
 
         public override List<string> GetOptions()
         {
             List<string> options = new();
+
+            foreach (string qualitySetting in QualitySettings.names)
+            {
+                options.Add(qualitySetting);
+            }
             return options;
         }
     }
