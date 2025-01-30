@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 using DaftAppleGames.Attributes;
 #endif
 
-namespace DaftAppleGames.Samples
+namespace DaftAppleGames.Settings.Samples
 {
     public class DemoUiManager : UiWindow
     {
