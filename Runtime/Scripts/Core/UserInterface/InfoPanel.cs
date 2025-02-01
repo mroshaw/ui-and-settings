@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface
 {
-    public class InfoPanel : UiWindow
+    public class InfoPanel : Window
     {
         // Public serializable properties
         [BoxGroup("UI Settings")] public TMP_Text headingText;

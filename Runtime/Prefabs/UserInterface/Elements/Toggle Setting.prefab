@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9104340999180816668}
   - component: {fileID: 8345526247529164033}
   - component: {fileID: 7002020172296944503}
+  - component: {fileID: 4212578505498174093}
   m_Layer: 5
   m_Name: Label Text (TMP)
   m_TagString: Untagged
@@ -136,6 +137,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4212578505498174093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347538037721534885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191ad599636f04f4893be4e6a125d232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlSubType: 4
 --- !u!1 &2024469576214166354
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ebc08c34f555f42be3e235c54c7805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingId: 
   label: {fileID: 7002020172296944503}
   toggle: {fileID: 6036399399508293188}
   toggleChangedEvent:

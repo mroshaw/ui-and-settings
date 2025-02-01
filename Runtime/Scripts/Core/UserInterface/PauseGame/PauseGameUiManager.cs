@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.PauseGame
 {
-    public class PauseGameUiManager : UiWindow
+    public class PauseGameUiManager : Window
     {
         [BoxGroup("UI Settings")] [SerializeField] private Button continueButton;
         [BoxGroup("UI Settings")] [SerializeField] private Button settingsButton;

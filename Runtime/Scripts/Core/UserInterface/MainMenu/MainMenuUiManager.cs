@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.MainMenu
 {
-    public class MainMenuUiManager : UiWindow
+    public class MainMenuUiManager : Window
     {
         [BoxGroup("UI Settings")] [SerializeField] private Button startButton;
         [BoxGroup("UI Settings")] [SerializeField] private Button settingsButton;

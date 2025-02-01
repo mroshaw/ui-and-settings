@@ -12,7 +12,7 @@ using DaftAppleGames.Attributes;
 
 namespace DaftAppleGames.Settings
 {
-    public class SettingsUIManager : UiWindow
+    public class SettingsUIManager : Window
     {
         #region Class Variables
 

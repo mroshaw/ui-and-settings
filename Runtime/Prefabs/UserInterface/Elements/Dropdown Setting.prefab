@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d298f7e8190719241a8091a95649c16d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingId: 
   label: {fileID: 4077573726113379156}
   dropdown: {fileID: 2054966953350707718}
   dropdownValueChangedEvent:
@@ -116,7 +117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -15, y: 0}
+  m_AnchoredPosition: {x: -40, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4014561201211368999
@@ -402,8 +403,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.5, y: -0.5}
-  m_SizeDelta: {x: -35, y: -13}
+  m_AnchoredPosition: {x: 2.5, y: -0.5}
+  m_SizeDelta: {x: -55, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6086993554500694098
 CanvasRenderer:
@@ -591,6 +592,7 @@ GameObject:
   - component: {fileID: 8531899834957513169}
   - component: {fileID: 8849954829741785321}
   - component: {fileID: 2054966953350707718}
+  - component: {fileID: 4044714835432565076}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -722,6 +724,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &4044714835432565076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4612491160381614582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a1a20e98885c042b848fdadcf0906f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlSubType: 8
 --- !u!1 &5715763389822549949
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +835,7 @@ GameObject:
   - component: {fileID: 8411211358885019482}
   - component: {fileID: 4173004735769226072}
   - component: {fileID: 4077573726113379156}
+  - component: {fileID: 8628665632913927938}
   m_Layer: 5
   m_Name: Label Text (TMP)
   m_TagString: Untagged
@@ -945,6 +961,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8628665632913927938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6489487504308669507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191ad599636f04f4893be4e6a125d232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlSubType: 4
 --- !u!1 &7140028997607229887
 GameObject:
   m_ObjectHideFlags: 0
