@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1078efaafe315dd4bad15aeca70c1d12, type: 3}
   m_Name: SliderTheme
   m_EditorClassIdentifier: 
-  baseColorTheme: {fileID: 11400000, guid: f730c2ea1530f374483c782263962e7a, type: 2}
+  useSpritesForTransition: 0
+  transitionColorTheme: {fileID: 11400000, guid: f730c2ea1530f374483c782263962e7a, type: 2}
+  transitionSpriteTheme: {fileID: 0}
   baseAudioTheme: {fileID: 11400000, guid: 823fc150d27ba3749a095797629a476d, type: 2}
-  highlightedFrameTexture: {fileID: 2800000, guid: 3a18c666704e41745ac719ada73bcfec, type: 3}
-  disabledTexture: {fileID: 2800000, guid: 3ed1a676333f0d64c87f53b206901436, type: 3}
-  sliderHandleTexture: {fileID: 2800000, guid: fc3ae77816b976b46b36f4d611089d63, type: 3}
-  sliderBackgroundTexture: {fileID: 2800000, guid: 9d50fceafab3c3c45875004544e7c7e6, type: 3}
-  labelTextTheme: {fileID: 11400000, guid: b25b1c5f121d66342bdd77f263a400e9, type: 2}
+  sliderBackgroundSprite: {fileID: 21300000, guid: 9d50fceafab3c3c45875004544e7c7e6, type: 3}
+  sliderPopulatedBackgroundSprite: {fileID: 21300000, guid: 3bea9cb641e68a44cad65973c182e208, type: 3}
+  sliderHandleSprite: {fileID: 21300000, guid: 19324b49447184e4e93981881a7d4c24, type: 3}

@@ -4,9 +4,8 @@ using Sirenix.OdinInspector;
 using DaftAppleGames.Attributes;
 #endif
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Audio;
+using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.Themes
 {
@@ -14,10 +13,39 @@ namespace DaftAppleGames.UserInterface.Themes
     [CreateAssetMenu(fileName = "ToggleTheme", menuName = "Daft Apple Games/User Interface/Toggle Theme")]
     public class ToggleTheme : SelectableTheme
     {
-        [BoxGroup("Image")] public Texture highlightedFrameTexture;
-        [BoxGroup("Image")] public Texture uncheckedTexture;
-        [BoxGroup("Image")] public Texture checkedTexture;
-        [BoxGroup("Image")] public Texture disabledTexture;
+        [BoxGroup("Image")] public Sprite checkMarkSprite;
+        [BoxGroup("Image")] public Sprite checkMarkBackgroundSprite;
         [BoxGroup("Text")] public TextTheme labelTextTheme;
+
+        public override void Apply(Selectable selectable)
+        {
+            base.Apply(selectable);
+
+            if (selectable is not Toggle toggle)
+            {
+                return;
+            }
+
+            GameObject checkmarkGameObject = toggle.graphic.gameObject;
+            Image checkMarkImage = checkmarkGameObject.GetComponent<Image>();
+            checkMarkImage.sprite = checkMarkSprite;
+            GameObject checkMarkBackgroundGameObject = checkmarkGameObject.transform.parent.gameObject;
+            Image checkMarkBackgroundImage = checkMarkBackgroundGameObject.GetComponent<Image>();
+            checkMarkBackgroundImage.sprite = checkMarkBackgroundSprite;
+
+#if UNITY_EDITOR
+            if (UnityEditor.PrefabUtility.IsPartOfNonAssetPrefabInstance(toggle))
+            {
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(toggle);
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(checkMarkImage);
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(checkMarkBackgroundImage);
+            }
+            else
+            {
+                UnityEditor.EditorUtility.SetDirty(toggle.gameObject);
+            }
+#endif
+
+        }
     }
 }

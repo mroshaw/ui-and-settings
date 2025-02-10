@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ToggleSpriteTheme
   m_EditorClassIdentifier: 
   highlightedSprite: {fileID: 21300000, guid: 3a18c666704e41745ac719ada73bcfec, type: 3}
-  pressedSprite: {fileID: 21300000, guid: 9a43ce2f63eaa854c98daae97827b4c9, type: 3}
-  selectedSprite: {fileID: 21300000, guid: 9a43ce2f63eaa854c98daae97827b4c9, type: 3}
-  disabledSprite: {fileID: 21300000, guid: 628ed39401ae1fb4eacadd3e3aece61b, type: 3}
+  pressedSprite: {fileID: 21300000, guid: 8f03a8a721d67c84eb485a11354614c3, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 8f03a8a721d67c84eb485a11354614c3, type: 3}
+  disabledSprite: {fileID: 21300000, guid: 8f03a8a721d67c84eb485a11354614c3, type: 3}

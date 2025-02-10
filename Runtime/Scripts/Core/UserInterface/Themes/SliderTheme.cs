@@ -7,6 +7,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.Themes
 {
@@ -14,10 +15,45 @@ namespace DaftAppleGames.UserInterface.Themes
     [CreateAssetMenu(fileName = "SliderTheme", menuName = "Daft Apple Games/User Interface/Slider Theme")]
     public class SliderTheme : SelectableTheme
     {
-        [BoxGroup("Image")] public Texture highlightedFrameTexture;
-        [BoxGroup("Image")] public Texture disabledTexture;
-        [BoxGroup("Image")] public Texture sliderHandleTexture;
-        [BoxGroup("Image")] public Texture sliderBackgroundTexture;
-        [BoxGroup("Text")] public TextTheme labelTextTheme;
+        [BoxGroup("Image")] public Sprite sliderBackgroundSprite;
+        [BoxGroup("Image")] public Sprite sliderPopulatedBackgroundSprite;
+        [BoxGroup("Image")] public Sprite sliderHandleSprite;
+
+        public override void Apply(Selectable selectable)
+        {
+            base.Apply(selectable);
+
+            if (selectable is not Slider slider)
+            {
+                return;
+            }
+
+            GameObject handleGameObject = slider.targetGraphic.gameObject;
+            Image handleImage = handleGameObject.GetComponent<Image>();
+            handleImage.sprite = sliderHandleSprite;
+
+            GameObject backgroundPopulatedGameObject = slider.fillRect.gameObject;
+            Image backgroundPopulatedImage = backgroundPopulatedGameObject.GetComponent<Image>();
+            backgroundPopulatedImage.sprite = sliderPopulatedBackgroundSprite;
+
+            GameObject backgroundGameObject = slider.transform.Find("Background").gameObject;
+            Image backgroundImage = backgroundGameObject.GetComponent<Image>();
+            backgroundImage.sprite = sliderBackgroundSprite;
+
+#if UNITY_EDITOR
+            if (UnityEditor.PrefabUtility.IsPartOfNonAssetPrefabInstance(slider))
+            {
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(slider);
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(handleImage);
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(backgroundPopulatedImage);
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(backgroundImage);
+            }
+            else
+            {
+                UnityEditor.EditorUtility.SetDirty(slider.gameObject);
+            }
+#endif
+
+        }
     }
 }

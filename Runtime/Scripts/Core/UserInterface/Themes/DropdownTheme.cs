@@ -40,7 +40,8 @@ namespace DaftAppleGames.UserInterface.Themes
             itemTextTheme.Apply(dropdown.itemText);
 
             // Background
-            dropdown.image.sprite = dropdownBackgroundSprite;
+            Image backgroundImage = dropdown.GetComponent<Image>();
+            backgroundImage.sprite = dropdownBackgroundSprite;
 
             // Get the drop down arrow gameobject
             GameObject arrowGameObject = dropdown.transform.Find("Arrow").gameObject;
@@ -74,6 +75,8 @@ namespace DaftAppleGames.UserInterface.Themes
             if (UnityEditor.PrefabUtility.IsPartOfNonAssetPrefabInstance(dropdown))
             {
                 UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(dropdown);
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(backgroundImage);
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(dropdown.image);
                 UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(arrowImage);
                 UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(itemLabelText);
                 UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(itemBackgroundImage);
