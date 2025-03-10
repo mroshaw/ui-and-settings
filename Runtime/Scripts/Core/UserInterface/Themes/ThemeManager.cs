@@ -34,6 +34,11 @@ namespace DaftAppleGames.UserInterface.Themes
         {
             foreach (ThemeApplier applier in themeAppliers)
             {
+                if (!applier)
+                {
+                    Debug.LogError($"Theme Applier is null on {applier.transform.parent.name}");
+                    continue;
+                }
                 applier.SetTheme(theme);
             }
         }

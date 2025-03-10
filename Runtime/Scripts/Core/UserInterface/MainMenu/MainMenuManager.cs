@@ -1,6 +1,5 @@
+using DaftAppleGames.Scenes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 namespace DaftAppleGames.UserInterface.MainMenu
 {
     /// <summary>
@@ -14,7 +13,7 @@ namespace DaftAppleGames.UserInterface.MainMenu
 
         public void StartNewGame()
         {
-            SceneManager.LoadScene("GameLoaderScene");
+            SceneLoaderManager.Instance.LoadGameLoaderScene();
         }
         public void ExitToDesktop()
         {

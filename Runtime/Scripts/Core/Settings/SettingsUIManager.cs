@@ -27,6 +27,13 @@ namespace DaftAppleGames.Settings
         #endregion
 
         #region Startup
+
+        public override void Start()
+        {
+            base.Start();
+
+        }
+
         protected override void InitHandlers()
         {
             InitUiMapping();

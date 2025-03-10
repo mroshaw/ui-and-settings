@@ -135,6 +135,10 @@ namespace DaftAppleGames.UserInterface
 
         public virtual void Open()
         {
+            if (IsUiOpen)
+            {
+                return;
+            }
             if (_uiCanvasGroup)
             {
                 StartCoroutine(FadeCanvas(true));

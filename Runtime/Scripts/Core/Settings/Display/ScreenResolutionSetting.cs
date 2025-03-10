@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 namespace DaftAppleGames.Settings.Display
 {
@@ -21,6 +22,7 @@ namespace DaftAppleGames.Settings.Display
         public override void Apply()
         {
             Resolution[] resolutions = Screen.resolutions;
+            Debug.Log($"Setting screen resolution to index {Value}: {resolutions[Value].width}, {resolutions[Value].height}");
             Screen.SetResolution(resolutions[Value].width, resolutions[Value].height, Screen.fullScreen);
         }
 

@@ -13,137 +13,58 @@ namespace DaftAppleGames.Settings
     {
         #region Class Variables
 
-        [BoxGroup("Behaviour")] [SerializeField] private bool loadOnStart = true;
-        [BoxGroup("Settings")] [SerializeField] private List<BoolSetting> boolSettings;
-        [BoxGroup("Settings")] [SerializeField] private List<FloatSetting> floatSettings;
-        [BoxGroup("Settings")] [SerializeField] private List<IntSetting> intSettings;
-        [BoxGroup("Settings")] [SerializeField] private List<OptionSetting> optionSettings;
-
-        private List<Setting> allSettings;
-
+        [BoxGroup("Settings")] [SerializeField] private SettingsSO settings;
         #endregion
 
         #region Startup
-        private void OnEnable()
-        {
-            
-        }
-
-        private void OnDisable()
-        {
-            
-        }
-
-        private void Awake()
-        {
-            RefreshAllSettings();
-        }
-
-        private void RefreshAllSettings()
-        {
-                allSettings = new List<Setting>();
-                allSettings.AddRange(boolSettings);
-                allSettings.AddRange(floatSettings);
-                allSettings.AddRange(intSettings);
-                allSettings.AddRange(optionSettings);
-
-                allSettings.Sort((a, b) => a.order.CompareTo(b.order));
-        }
-
         private void Start()
         {
-            if (loadOnStart)
-            {
-                LoadAndApplySettings();
-            }
+            settings.LoadAndApplySettings();
         }
+
         #endregion
 
         #region Class methods
 
-        internal Setting GetAnySetting(string settingId)
-        {
-            RefreshAllSettings();
-            foreach (Setting setting in allSettings)
-            {
-                if (setting.settingId == settingId)
-                {
-                    return setting;
-                }
-            }
-            return null;
-        }
-
-        private Setting GetSetting(List<Setting> settingsList, string settingId)
-        {
-            foreach (Setting setting in settingsList)
-            {
-                if (setting.settingId == settingId)
-                {
-                    return setting;
-                }
-            }
-
-            return null;
-        }
-
-        public BoolSetting GetBoolSetting(string settingId)
-        {
-            List<Setting> settings = boolSettings.Cast<Setting>().ToList();
-            return GetSetting(settings, settingId) as BoolSetting;
-        }
-
-        public FloatSetting GetFloatSetting(string settingId)
-        {
-            List<Setting> settings = floatSettings.Cast<Setting>().ToList();
-            return GetSetting(settings, settingId) as FloatSetting;
-        }
-
-        public IntSetting GetIntSetting(string settingId)
-        {
-            List<Setting> settings = intSettings.Cast<Setting>().ToList();
-            return GetSetting(settings, settingId) as IntSetting;
-        }
-
-        public OptionSetting GetOptionSetting(string settingId)
-        {
-            List<Setting> settings = optionSettings.Cast<Setting>().ToList();
-            return GetSetting(settings, settingId) as OptionSetting;
-        }
-
-
-        public void LoadAndApplySettings()
-        {
-            foreach(Setting setting in allSettings)
-            {
-                setting.LoadAndApply();
-            }
-        }
-
         public void LoadSettings()
         {
-            foreach(Setting setting in allSettings)
-            {
-                setting.Load();
-            }
+            settings.LoadSettings();
         }
 
         public void ApplySettings()
         {
-            foreach(Setting setting in allSettings)
-            {
-                setting.Apply();
-            }
+            settings.ApplySettings();
+        }
+
+        public void LoadAndApplySettings()
+        {
+            settings.LoadAndApplySettings();
         }
 
         public void SaveSettings()
         {
-            foreach(Setting setting in allSettings)
-            {
-                setting.Save();
-            }
+            settings.SaveSettings();
         }
 
+        public BoolSetting GetBoolSetting(string settingId)
+        {
+            return settings.GetBoolSetting(settingId);
+        }
+
+        public FloatSetting GetFloatSetting(string settingId)
+        {
+            return settings.GetFloatSetting(settingId);
+        }
+
+        public OptionSetting GetOptionSetting(string settingId)
+        {
+            return settings.GetOptionSetting(settingId);
+        }
+
+        public Setting GetAnySetting(string settingId)
+        {
+            return settings.GetAnySetting(settingId);
+        }
         #endregion
     }
 }

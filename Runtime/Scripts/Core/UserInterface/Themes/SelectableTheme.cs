@@ -40,12 +40,18 @@ namespace DaftAppleGames.UserInterface.Themes
 
         protected void PlayClick()
         {
-            _audioSource.PlayOneShot(baseAudioTheme.clickedClip);
+            if (_audioSource && _audioSource.enabled == true)
+            {
+                _audioSource.PlayOneShot(baseAudioTheme.clickedClip);
+            }
         }
 
         protected void PlaySelected()
         {
-            _audioSource.PlayOneShot(baseAudioTheme.selectedClip);
+            if (_audioSource && _audioSource.enabled == true)
+            {
+                _audioSource.PlayOneShot(baseAudioTheme.selectedClip);
+            }
         }
 
         protected void ApplyTransitions(Selectable selectable)
