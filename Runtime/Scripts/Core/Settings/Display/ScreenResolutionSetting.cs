@@ -22,8 +22,9 @@ namespace DaftAppleGames.Settings.Display
         public override void Apply()
         {
             Resolution[] resolutions = Screen.resolutions;
-            Debug.Log($"Setting screen resolution to index {Value}: {resolutions[Value].width}, {resolutions[Value].height}");
-            Screen.SetResolution(resolutions[Value].width, resolutions[Value].height, Screen.fullScreen);
+
+            Debug.Log($"Setting screen resolution to index {Value}: {resolutions[Value].width}, {resolutions[Value].height} at {resolutions[Value].refreshRateRatio}");
+            Screen.SetResolution(resolutions[Value].width, resolutions[Value].height, Screen.fullScreenMode, resolutions[Value].refreshRateRatio);
         }
 
         protected override int GetDefault()

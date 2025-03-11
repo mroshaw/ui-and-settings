@@ -6,6 +6,7 @@ using DaftAppleGames.Attributes;
 using System.Collections.Generic;
 using System.Linq;
 using DaftAppleGames.Gameplay;
+using DaftAppleGames.Scenes;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -59,7 +60,7 @@ namespace DaftAppleGames.UserInterface.PauseGame
 
         public void ReturnToMainMenu()
         {
-            SceneManager.LoadScene("MainMenuLoaderScene");
+            SceneLoaderManager.Instance.LoadMainMenuLoaderScene();
         }
 
         public void ExitToDesktop()

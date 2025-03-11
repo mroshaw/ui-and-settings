@@ -21,16 +21,18 @@ namespace DaftAppleGames.UserInterface.MainMenu
         [BoxGroup("UI Events")] [SerializeField] private UnityEvent onLoadButtonClickEvent;
         [BoxGroup("UI Events")] [SerializeField] private UnityEvent onExitToDesktopButtonClickEvent;
 
-        protected override void InitHandlers()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             startButton.onClick.AddListener(StartButtonClick);
             settingsButton.onClick.AddListener(SettingsButtonClick);
             loadButton.onClick.AddListener(LoadButtonClick);
             exitDesktopButton.onClick.AddListener(ExitButtonClick);
         }
 
-        protected override void DeInitHandlers()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             startButton.onClick.RemoveListener(StartButtonClick);
             settingsButton.onClick.RemoveListener(SettingsButtonClick);
             loadButton.onClick.RemoveListener(LoadButtonClick);

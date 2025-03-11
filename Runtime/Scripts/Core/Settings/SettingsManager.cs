@@ -14,14 +14,24 @@ namespace DaftAppleGames.Settings
         #region Class Variables
 
         [BoxGroup("Settings")] [SerializeField] private SettingsSO settings;
+        [BoxGroup("Settings")] [SerializeField] private bool notifyListenersOnStart = true;
         #endregion
 
         #region Startup
-        private void Start()
+
+        private void Awake()
         {
-            settings.LoadAndApplySettings();
+            settings.Initialise();
         }
 
+        private void Start()
+        {
+            if (notifyListenersOnStart)
+            {
+                Debug.Log("Settings Manager - Notifying Listeners");
+                settings.NotifyListeners();
+            }
+        }
         #endregion
 
         #region Class methods

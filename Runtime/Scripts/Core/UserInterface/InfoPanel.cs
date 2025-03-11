@@ -24,12 +24,12 @@ namespace DaftAppleGames.UserInterface
         [Header("UI Proxy Events")]
         public UnityEvent onContinueButtonClickedEvent;
 
-        protected override void InitHandlers()
+        protected override void OnEnable()
         {
             continueButton.onClick.AddListener(ContinueButtonClick);
         }
 
-        protected override void DeInitHandlers()
+        protected override void OnDisable()
         {
             continueButton.onClick.RemoveListener(ContinueButtonClick);
         }

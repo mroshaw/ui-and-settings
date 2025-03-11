@@ -19,20 +19,25 @@ namespace DaftAppleGames.Settings
         [BoxGroup("Settings")] [SerializeField] private List<IntSetting> intSettings;
         [BoxGroup("Settings")] [SerializeField] private List<OptionSetting> optionSettings;
 
+        private bool _isInitialized = false;
         private List<Setting> _allSettings;
 
         #endregion
         #region Unity events
         private void OnEnable()
         {
-            RefreshAllSettings();
+
         }
 
         #endregion
-
         #region Class methods
-        internal void RefreshAllSettings()
+        internal void Initialise()
         {
+            if (_isInitialized)
+            {
+                return;
+            }
+
             _allSettings = new List<Setting>();
             _allSettings.AddRange(boolSettings);
             _allSettings.AddRange(floatSettings);
@@ -40,6 +45,8 @@ namespace DaftAppleGames.Settings
             _allSettings.AddRange(optionSettings);
 
             _allSettings.Sort((a, b) => a.order.CompareTo(b.order));
+
+            _isInitialized = true;
         }
 
         internal BoolSetting GetBoolSetting(string settingId)
@@ -68,7 +75,7 @@ namespace DaftAppleGames.Settings
 
         internal Setting GetAnySetting(string settingId)
         {
-            RefreshAllSettings();
+            Initialise();
             foreach (Setting setting in _allSettings)
             {
                 if (setting.settingId == settingId)
@@ -77,6 +84,40 @@ namespace DaftAppleGames.Settings
                 }
             }
             return null;
+        }
+
+        /// <summary>
+        /// Notifies all listeners of current value state
+        /// </summary>
+        public void NotifyListeners()
+        {
+            if (_allSettings == null || _allSettings.Count == 0)
+            {
+                Debug.Log("Notify Listeners is refreshing the settings...");
+                Initialise();
+            }
+            foreach (Setting setting in _allSettings)
+            {
+                if (setting is BoolSetting boolSetting)
+                {
+                    boolSetting.valueChangedEvent.Invoke(boolSetting.Value);
+                }
+
+                if (setting is BoolSetting floatSetting)
+                {
+                    floatSetting.valueChangedEvent.Invoke(floatSetting.Value);
+                }
+
+                if (setting is OptionSetting optionSetting)
+                {
+                    optionSetting.valueChangedEvent.Invoke(optionSetting.Value);
+                }
+                if (setting is IntSetting intSetting)
+                {
+                    intSetting.valueChangedEvent.Invoke(intSetting.Value);
+                }
+
+            }
         }
 
         private Setting GetSetting(List<Setting> settingsList, string settingId)

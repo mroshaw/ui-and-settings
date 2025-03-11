@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 369688f9729cb0149bbe4fd91af308ef, type: 3}
-  m_Name: ScreenResolutionVolumeSettingSO
+  m_Name: ScreenResolutionSettingSO
   m_EditorClassIdentifier: 
   settingId: ScreenResolution
   value: 0

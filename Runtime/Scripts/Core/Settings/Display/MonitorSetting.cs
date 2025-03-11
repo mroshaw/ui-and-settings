@@ -29,12 +29,11 @@ namespace DaftAppleGames.Settings.Display
 
         public override void Apply()
         {
-            /*
-            if (!UnityEngine.Display.displays[Value].active)
+            if (Screen.mainWindowDisplayInfo.Equals(_displayInfos[Value]))
             {
-                UnityEngine.Display.displays[Value].Activate();
+                return;
             }
-            */
+            Debug.Log("Moving main window");
             Screen.MoveMainWindowTo(_displayInfos[Value], Vector2Int.zero);
         }
 

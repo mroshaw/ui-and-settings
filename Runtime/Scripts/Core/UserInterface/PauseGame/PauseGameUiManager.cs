@@ -26,7 +26,7 @@ namespace DaftAppleGames.UserInterface.PauseGame
         [BoxGroup("UI Events")] [SerializeField] private UnityEvent onExitToDesktopButtonClickEvent;
         [BoxGroup("I Events")] [SerializeField] private UnityEvent onBackButtonClickEvent;
 
-        protected override void InitHandlers()
+        protected override void OnEnable()
         {
             continueButton.onClick.AddListener(ContinueButtonClick);
             settingsButton.onClick.AddListener(SettingsButtonClick);
@@ -36,7 +36,7 @@ namespace DaftAppleGames.UserInterface.PauseGame
             exitDesktopButton.onClick.AddListener(ExitButtonClick);
         }
 
-        protected override void DeInitHandlers()
+        protected override void OnDisable()
         {
             continueButton.onClick.RemoveListener(ContinueButtonClick);
             settingsButton.onClick.RemoveListener(SettingsButtonClick);

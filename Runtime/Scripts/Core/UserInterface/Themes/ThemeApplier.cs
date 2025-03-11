@@ -11,6 +11,9 @@ namespace DaftAppleGames.UserInterface.Themes
         [BoxGroup("Settings")] [SerializeField] ThemeControlSubType controlSubType;
         private ElementTheme _elementTheme;
 
+        private ThemeManager _themeManager;
+        private AudioSource _audioSource;
+
         protected Selectable Selectable { get; set;  }
         protected TMP_Text Text { get; set;  }
         protected bool IsSelectable { get; private set; }
@@ -25,12 +28,20 @@ namespace DaftAppleGames.UserInterface.Themes
             IsText = Text != null;
         }
 
-        public void SetTheme(Theme theme)
+        public void SetTheme(Theme theme, ThemeManager themeManager)
         {
+            _themeManager = themeManager;
+            _audioSource = _themeManager.GetComponent<AudioSource>();
+
             ElementTheme elementTheme = theme.GetElementTheme(controlSubType);
             ApplyTheme(elementTheme);
         }
 
         protected abstract void ApplyTheme(ElementTheme theme);
+
+        protected void PlayClip(AudioClip clip)
+        {
+            _audioSource.PlayOneShot(clip);
+        }
     }
 }

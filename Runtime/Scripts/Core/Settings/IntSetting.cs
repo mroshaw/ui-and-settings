@@ -9,20 +9,31 @@ namespace DaftAppleGames.Settings
     {
         [SerializeField] private int value;
         public UnityEvent<int> valueChangedEvent;
-        protected int Value => value;
+        public int Value => value;
 
         public void SetValue(int newValue)
         {
             value = newValue;
             valueChangedEvent.Invoke(value);
+        }
+
+        public void SetValueAndApply(int newValue)
+        {
+            SetValue(newValue);
             Apply();
         }
 
         public void SetValueNoEvent(int newValue)
         {
             value = newValue;
+        }
+
+        public void SetValueAndApplyNoEvent(int newValue)
+        {
+            SetValueNoEvent(newValue);
             Apply();
         }
+
 
         public override void Save()
         {

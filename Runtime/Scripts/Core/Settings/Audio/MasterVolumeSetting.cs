@@ -28,7 +28,7 @@ namespace DaftAppleGames.Settings.Audio
 
         protected override string GetAudioMixerGroupParameter()
         {
-            return "MasterVolume";
+            return "UserMasterVolume";
         }
     }
 }

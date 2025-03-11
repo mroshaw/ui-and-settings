@@ -20,14 +20,14 @@ namespace DaftAppleGames.Settings.Samples
         [BoxGroup("UI Events")] public UnityEvent onPauseButtonClick;
         [BoxGroup("UI Events")] public UnityEvent onSettingsButtonClick;
 
-        protected override void InitHandlers()
+        protected override void OnEnable()
         {
             menuButton.onClick.AddListener(MenuButtonClick);
             pauseButton.onClick.AddListener(PauseButtonClick);
             settingsButton.onClick.AddListener(SettingsButtonClick);
         }
 
-        protected override void DeInitHandlers()
+        protected override void OnDisable()
         {
             menuButton.onClick.RemoveListener(MenuButtonClick);
             pauseButton.onClick.RemoveListener(PauseButtonClick);

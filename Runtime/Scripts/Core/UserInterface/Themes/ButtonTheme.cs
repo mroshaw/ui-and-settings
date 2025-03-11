@@ -42,13 +42,7 @@ namespace DaftAppleGames.UserInterface.Themes
                 buttonImage.sprite = imageSprite;
             }
 
-#if UNITY_EDITOR
-            UnityEventTools.RemovePersistentListener(button.onClick, PlayClick);
-            UnityEventTools.AddPersistentListener(button.onClick, PlayClick);
-#else
-            button.onClick.RemoveListener(PlayClick);
-            button.onClick.AddListener(PlayClick);
-#endif
+
 
 #if UNITY_EDITOR
             if (UnityEditor.PrefabUtility.IsPartOfNonAssetPrefabInstance(button))

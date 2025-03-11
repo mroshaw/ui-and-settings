@@ -15,14 +15,25 @@ namespace DaftAppleGames.Settings
         {
             value = newValue;
             valueChangedEvent.Invoke(value);
+        }
+
+        public void SetValueAndApply(bool newValue)
+        {
+            SetValue(newValue);
             Apply();
         }
 
         public void SetValueNoEvent(bool newValue)
         {
             value = newValue;
+        }
+
+        public void SetValueAndApplyNoEvent(bool newValue)
+        {
+            SetValueNoEvent(newValue);
             Apply();
         }
+
 
         public override void Save()
         {

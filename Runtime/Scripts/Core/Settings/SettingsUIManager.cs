@@ -28,21 +28,12 @@ namespace DaftAppleGames.Settings
 
         #region Startup
 
-        public override void Start()
+        public override void Awake()
         {
-            base.Start();
-
-        }
-
-        protected override void InitHandlers()
-        {
+            base.Awake();
+            Debug.Log("Settings UI - Init UI Mappings and Buttons");
             InitUiMapping();
             InitButtons();
-        }
-
-        protected override void DeInitHandlers()
-        {
-            DeInitButtons();
         }
         #endregion
 
@@ -139,8 +130,8 @@ namespace DaftAppleGames.Settings
             floatSettingUI.SetSliderMinMax(floatSetting.GetMinValue(), floatSetting.GetMaxValue());
 
             // When UI changes, update the settings
-            floatSettingUI.sliderValueChangedEvent.RemoveListener(floatSetting.SetValueNoEvent);
-            floatSettingUI.sliderValueChangedEvent.AddListener(floatSetting.SetValueNoEvent);
+            floatSettingUI.sliderValueChangedEvent.RemoveListener(floatSetting.SetValueAndApplyNoEvent);
+            floatSettingUI.sliderValueChangedEvent.AddListener(floatSetting.SetValueAndApplyNoEvent);
 
             // When settings are updated, change the UI
             floatSetting.valueChangedEvent.RemoveListener(floatSettingUI.SetSliderValue);
@@ -165,8 +156,8 @@ namespace DaftAppleGames.Settings
             optionSettingUI.PopulateOptions(optionSetting.GetOptions());
 
             // When UI changes, update the settings
-            optionSettingUI.dropdownValueChangedEvent.RemoveListener(optionSetting.SetValueNoEvent);
-            optionSettingUI.dropdownValueChangedEvent.AddListener(optionSetting.SetValueNoEvent);
+            optionSettingUI.dropdownValueChangedEvent.RemoveListener(optionSetting.SetValueAndApplyNoEvent);
+            optionSettingUI.dropdownValueChangedEvent.AddListener(optionSetting.SetValueAndApplyNoEvent);
 
             // When settings are updated, change the UI
             optionSetting.valueChangedEvent.RemoveListener(optionSettingUI.SetDropdownValue);
@@ -187,8 +178,8 @@ namespace DaftAppleGames.Settings
             boolSettingUI.SetLabel(boolSetting.GetDisplayName());
 
             // When UI changes, update the settings
-            boolSettingUI.toggleChangedEvent.RemoveListener(boolSetting.SetValueNoEvent);
-            boolSettingUI.toggleChangedEvent.AddListener(boolSetting.SetValueNoEvent);
+            boolSettingUI.toggleChangedEvent.RemoveListener(boolSetting.SetValueAndApplyNoEvent);
+            boolSettingUI.toggleChangedEvent.AddListener(boolSetting.SetValueAndApplyNoEvent);
 
             // When settings are updated, change the UI
             boolSetting.valueChangedEvent.RemoveListener(boolSettingUI.SetToggleValue);

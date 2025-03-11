@@ -27,6 +27,8 @@ namespace DaftAppleGames.Settings
         /// </summary>   
         private void Awake()
         {
+            settings.Initialise();
+
             if (applyOnAwake)
             {
                 LoadAndApplySettings();

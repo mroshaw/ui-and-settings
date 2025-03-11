@@ -39,7 +39,6 @@ namespace DaftAppleGames.UserInterface
         {
             // Subscribe to input changed
             StartCoroutine(FindPlayerInputAsync());
-            InitHandlers();
         }
 
         protected virtual void OnDisable()
@@ -48,12 +47,7 @@ namespace DaftAppleGames.UserInterface
             {
                 _playerInput.controlsChangedEvent.RemoveListener(ControlSchemeChangedHandler);
             }
-            DeInitHandlers();
         }
-
-        protected abstract void InitHandlers();
-
-        protected abstract void DeInitHandlers();
 
         private IEnumerator FindPlayerInputAsync()
         {
@@ -96,8 +90,6 @@ namespace DaftAppleGames.UserInterface
             {
                 WindowController.Instance.UnRegisterUiWindow(this);
             }
-
-            DeInitHandlers();
         }
 
         #endregion
@@ -143,6 +135,10 @@ namespace DaftAppleGames.UserInterface
             {
                 StartCoroutine(FadeCanvas(true));
                 return;
+            }
+            else
+            {
+                Debug.Log($"Window: No CanvasGroup found on: {gameObject.name}");
             }
             // Enable the UI panel and set Event content
             SetUiState(true, true);

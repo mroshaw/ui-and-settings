@@ -38,21 +38,7 @@ namespace DaftAppleGames.UserInterface.Themes
 #endif
         }
 
-        protected void PlayClick()
-        {
-            if (_audioSource && _audioSource.enabled == true)
-            {
-                _audioSource.PlayOneShot(baseAudioTheme.clickedClip);
-            }
-        }
 
-        protected void PlaySelected()
-        {
-            if (_audioSource && _audioSource.enabled == true)
-            {
-                _audioSource.PlayOneShot(baseAudioTheme.selectedClip);
-            }
-        }
 
         protected void ApplyTransitions(Selectable selectable)
         {
