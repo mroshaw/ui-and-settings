@@ -1,5 +1,7 @@
 using TMPro;
+#if UNITY_EDITOR
 using UnityEditor.Events;
+#endif
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -31,8 +33,8 @@ namespace DaftAppleGames.UserInterface.Themes
 
             UnityEventTools.AddPersistentListener(_button.onClick, PlayClick);
 #else
-            button.onClick.RemoveListener(PlayClick);
-            button.onClick.AddListener(PlayClick);
+            _button.onClick.RemoveListener(PlayClick);
+            _button.onClick.AddListener(PlayClick);
 #endif
         }
 

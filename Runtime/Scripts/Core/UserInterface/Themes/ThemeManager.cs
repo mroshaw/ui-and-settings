@@ -1,6 +1,7 @@
-using DaftAppleGames.UserInterface;
 using UnityEditor;
+#if UNITY_EDITOR
 using UnityEditor.Events;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 #if ODIN_INSPECTOR

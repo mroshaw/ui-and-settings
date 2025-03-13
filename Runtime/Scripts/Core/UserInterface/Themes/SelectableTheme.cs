@@ -49,7 +49,8 @@ namespace DaftAppleGames.UserInterface.Themes
                 {
                     highlightedSprite = transitionSpriteTheme.highlightedSprite,
                     pressedSprite = transitionSpriteTheme.pressedSprite,
-                    disabledSprite = transitionSpriteTheme.disabledSprite
+                    disabledSprite = transitionSpriteTheme.disabledSprite,
+                    selectedSprite = transitionSpriteTheme.selectedSprite
                 };
                 selectable.spriteState = newSpriteState;
             }

@@ -75,6 +75,7 @@ namespace DaftAppleGames.UserInterface.PauseGame
 
         private void PauseAllPausables()
         {
+            RefreshPausables();
             foreach (IPausable pausable in _allPausables)
             {
                 pausable.Pause();
