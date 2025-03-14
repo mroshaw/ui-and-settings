@@ -20,7 +20,7 @@ namespace DaftAppleGames.Settings
         [BoxGroup("Settings")] [SerializeField] private List<OptionSetting> optionSettings;
 
         private bool _isInitialized = false;
-        private List<Setting> _allSettings;
+        private List<Setting> _allSettings = new List<Setting>();
 
         #endregion
         #region Unity events
@@ -31,22 +31,25 @@ namespace DaftAppleGames.Settings
 
         #endregion
         #region Class methods
-        internal void Initialise()
+        internal void Initialise(bool forceReinitialise = false)
         {
             if (_isInitialized)
             {
                 return;
             }
-
-            _allSettings = new List<Setting>();
-            _allSettings.AddRange(boolSettings);
-            _allSettings.AddRange(floatSettings);
-            _allSettings.AddRange(intSettings);
-            _allSettings.AddRange(optionSettings);
-
-            _allSettings.Sort((a, b) => a.order.CompareTo(b.order));
-
+            _allSettings = GetAllSettings();
             _isInitialized = true;
+        }
+
+        private List<Setting> GetAllSettings()
+        {
+            List<Setting> allSettings = new List<Setting>();
+            allSettings.AddRange(boolSettings);
+            allSettings.AddRange(floatSettings);
+            allSettings.AddRange(intSettings);
+            allSettings.AddRange(optionSettings);
+            allSettings.Sort((a, b) => a.order.CompareTo(b.order));
+            return allSettings;
         }
 
         internal BoolSetting GetBoolSetting(string settingId)

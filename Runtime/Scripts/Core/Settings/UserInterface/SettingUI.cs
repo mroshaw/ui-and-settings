@@ -24,6 +24,7 @@ namespace DaftAppleGames.Settings
         {
             #if UNITY_EDITOR
             label.text = labelText;
+            label.SetText(labelText);
             UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(label);
             UnityEditor.EditorUtility.SetDirty(label.gameObject);
             #endif

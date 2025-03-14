@@ -11,7 +11,7 @@ namespace DaftAppleGames.UserInterface.Themes
         [BoxGroup("Settings")] [SerializeField] ThemeControlSubType controlSubType;
         private ElementTheme _elementTheme;
 
-        private ThemeManager _themeManager;
+        [SerializeField] private ThemeManager themeManager;
         private AudioSource _audioSource;
 
         protected Selectable Selectable { get; set;  }
@@ -21,6 +21,7 @@ namespace DaftAppleGames.UserInterface.Themes
 
         private void Awake()
         {
+            _audioSource = themeManager.GetComponent<AudioSource>();
             Selectable = GetComponent<Selectable>();
             IsSelectable = Selectable != null;
 
@@ -28,10 +29,13 @@ namespace DaftAppleGames.UserInterface.Themes
             IsText = Text != null;
         }
 
-        public void SetTheme(Theme theme, ThemeManager themeManager)
+        public void SetTheme(Theme theme, ThemeManager newThemeManager)
         {
-            _themeManager = themeManager;
-            _audioSource = _themeManager.GetComponent<AudioSource>();
+            themeManager = newThemeManager;
+#if UNITY_EDITOR
+            UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(this);
+            UnityEditor.EditorUtility.SetDirty(this);
+#endif
 
             ElementTheme elementTheme = theme.GetElementTheme(controlSubType);
             ApplyTheme(elementTheme);

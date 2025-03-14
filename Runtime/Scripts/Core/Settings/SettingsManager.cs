@@ -36,6 +36,11 @@ namespace DaftAppleGames.Settings
 
         #region Class methods
 
+        internal void RefreshSettings()
+        {
+            settings.Initialise(true);
+        }
+
         public void LoadSettings()
         {
             settings.LoadSettings();

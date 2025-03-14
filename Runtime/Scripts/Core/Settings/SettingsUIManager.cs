@@ -47,9 +47,11 @@ namespace DaftAppleGames.Settings
             settingUis = GetComponentsInChildren<SettingUI>(true).ToList();
         }
 
+
         [Button("Set UI Labels")]
         private void SetUILabels()
         {
+            settingsManager.RefreshSettings();
             foreach (SettingUI settingUI in settingUis)
             {
                 Setting setting = settingsManager.GetAnySetting(settingUI.settingId);
