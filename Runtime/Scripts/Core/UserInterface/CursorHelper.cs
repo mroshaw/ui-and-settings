@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace DaftAppleGames.UserInterface
 {
+    /// <summary>
+    /// Component to allow locking and unlocking of the cursor via UnityEvents
+    /// </summary>
     public class CursorHelper : MonoBehaviour
     {
         /// <summary>

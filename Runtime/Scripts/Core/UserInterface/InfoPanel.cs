@@ -10,18 +10,18 @@ using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface
 {
+    /// <summary>
+    /// A type of Window for displaying text, and image, and a "Continue" button
+    /// </summary>
     public class InfoPanel : Window
     {
-        // Public serializable properties
-        [BoxGroup("UI Settings")] public TMP_Text headingText;
-        [BoxGroup("UI Settings")] public TMP_Text contentText;
-        [BoxGroup("UI Settings")] public Image image;
+        [BoxGroup("Text Settings")] [SerializeField] private TMP_Text headingText;
+        [BoxGroup("Text Settings")] [SerializeField] private TMP_Text contentText;
+        [BoxGroup("Image Settings")] [SerializeField] private Image image;
+        [BoxGroup("Image Settings")] [SerializeField] private Image[] inlineImages;
+        [BoxGroup("Button Settings")] [SerializeField] private Button continueButton;
 
-        [BoxGroup("UI Settings")] [SerializeField] private Button continueButton;
-
-        [BoxGroup("UI Settings")] public Image[] inlineImages;
-
-        [Header("UI Proxy Events")]
+        [BoxGroup("UI Proxy Events")]
         public UnityEvent onContinueButtonClickedEvent;
 
         protected override void OnEnable()
@@ -45,7 +45,6 @@ namespace DaftAppleGames.UserInterface
         /// <summary>
         /// Sets the heading text
         /// </summary>
-        /// <param name="text"></param>
         public void SetHeadingText(string text)
         {
             headingText.text = text;
@@ -54,7 +53,6 @@ namespace DaftAppleGames.UserInterface
         /// <summary>
         /// Sets the content text
         /// </summary>
-        /// <param name="text"></param>
         public void SetContentText(string text)
         {
             contentText.text = text;
@@ -63,7 +61,6 @@ namespace DaftAppleGames.UserInterface
         /// <summary>
         /// Set the content image
         /// </summary>
-        /// <param name="sprite"></param>
         public void SetImage(Sprite sprite)
         {
             image.sprite = sprite;

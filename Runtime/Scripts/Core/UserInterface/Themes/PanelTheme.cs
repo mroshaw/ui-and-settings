@@ -15,8 +15,9 @@ namespace DaftAppleGames.UserInterface.Themes
     [CreateAssetMenu(fileName = "PanelTheme", menuName = "Daft Apple Games/User Interface/Panel Theme")]
     public class PanelTheme : ElementTheme
     {
-        [BoxGroup("Background")] public Sprite backgroundSprite;
-        [BoxGroup("Background")] public Color backgroundColor;
+        [BoxGroup("Background")] [SerializeField] private Sprite backgroundSprite;
+        [BoxGroup("Background")] [SerializeField] private Color backgroundColor;
+        
         public void Apply(CanvasRenderer canvasRenderer)
         {
             Debug.Log($"Applying theme element {this} to panel {canvasRenderer.name}");

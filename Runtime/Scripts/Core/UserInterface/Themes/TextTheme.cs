@@ -13,10 +13,10 @@ namespace DaftAppleGames.UserInterface.Themes
     [CreateAssetMenu(fileName = "TextTheme", menuName = "Daft Apple Games/User Interface/Text Theme")]
     public class TextTheme : ElementTheme
     {
-        [BoxGroup("Text")] public TMP_FontAsset font;
-        [BoxGroup("Text")] public Color textColor = Color.white;
-        [BoxGroup("Text")] public int size;
-        [BoxGroup("Text")] public bool isBold;
+        [BoxGroup("Text")] [SerializeField] private TMP_FontAsset font;
+        [BoxGroup("Text")] [SerializeField] private Color textColor = Color.white;
+        [BoxGroup("Text")] [SerializeField] private int size;
+        [BoxGroup("Text")] [SerializeField] private bool isBold;
 
         public void Apply(TMP_Text text)
         {

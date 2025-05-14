@@ -6,7 +6,6 @@ using DaftAppleGames.Attributes;
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.Themes
@@ -15,15 +14,15 @@ namespace DaftAppleGames.UserInterface.Themes
     [CreateAssetMenu(fileName = "DropdownTheme", menuName = "Daft Apple Games/User Interface/Dropdown Theme")]
     public class DropdownTheme : SelectableTheme
     {
-        [BoxGroup("Image")] public Sprite dropdownArrowSprite;
-        [BoxGroup("Image")] public Sprite dropdownBackgroundSprite;
-        [BoxGroup("Image")] public Sprite dropdownViewportSprite;
-        [BoxGroup("Image")] public Sprite itemBackgroundSprite;
-        [BoxGroup("Image")] public Color itemBackgroundColor;
-        [BoxGroup("Image")] public Sprite checkmarkSprite;
-        [BoxGroup("Text")] public TextTheme captionTextTheme;
-        [BoxGroup("Text")] public TextTheme itemTextTheme;
-        [BoxGroup("Text")] public TextTheme itemLabelTextTheme;
+        [BoxGroup("Image")] [SerializeField] private Sprite dropdownArrowSprite;
+        [BoxGroup("Image")] [SerializeField] private Sprite dropdownBackgroundSprite;
+        [BoxGroup("Image")] [SerializeField] private Sprite dropdownViewportSprite;
+        [BoxGroup("Image")] [SerializeField] private Sprite itemBackgroundSprite;
+        [BoxGroup("Image")] [SerializeField] private Color itemBackgroundColor;
+        [BoxGroup("Image")] [SerializeField] private Sprite checkmarkSprite;
+        [BoxGroup("Text")] [SerializeField] private TextTheme captionTextTheme;
+        [BoxGroup("Text")] [SerializeField] private TextTheme itemTextTheme;
+        [BoxGroup("Text")] [SerializeField] private TextTheme itemLabelTextTheme;
 
         public override void Apply(Selectable selectable)
         {

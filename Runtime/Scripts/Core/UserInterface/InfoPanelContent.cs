@@ -7,12 +7,14 @@ using UnityEngine;
 
 namespace DaftAppleGames.UserInterface
 {
+    /// <summary>
+    /// ScriptableObject that contains the definition of InfoPanel content
+    /// </summary>
     [CreateAssetMenu(fileName = "InfoPanelContent", menuName = "Game/InfoPanel Content", order = 1)]
     public class InfoPanelContent : ScriptableObject
     {
-        // Public serializable properties
-        [BoxGroup("Content")] public string heading;
-        [BoxGroup("Content")] [Multiline(10)] public string content;
-        [BoxGroup("Content")] public Sprite image;
+        [BoxGroup("Text Content")] public string heading;
+        [BoxGroup("Text Content")] [Multiline(10)] public string content;
+        [BoxGroup("Image Content")] public Sprite image;
     }
 }

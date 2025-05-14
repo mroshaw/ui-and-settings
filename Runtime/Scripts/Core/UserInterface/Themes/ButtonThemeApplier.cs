@@ -48,7 +48,7 @@ namespace DaftAppleGames.UserInterface.Themes
 
         private void PlayClick()
         {
-            PlayClip(buttonTheme.baseAudioTheme.clickedClip);
+            PlayClip(buttonTheme.BaseAudioTheme.ClickedClip);
         }
 
         public void OnSelect(BaseEventData eventData)

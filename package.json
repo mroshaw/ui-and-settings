@@ -1,12 +1,12 @@
 {
   "name": "com.daftapplegames.ui-and-settings",
-  "version": "1.0.0",
-  "displayName": "UI Extensions and Settings",
+  "version": "0.0.9",
+  "displayName": "Daft Apple UI and Settings",
   "description": "Base UI features and game settings functionality",
   "unity": "6000.0",
-  "documentationUrl": "https://example.com/",
-  "changelogUrl": "https://example.com/changelog.html",
-  "licensesUrl": "https://example.com/licensing.html",
+  "documentationUrl": "https://mroshaw.github.io/unity-framework-docs/uiandsettings",
+  "changelogUrl": "https://mroshaw.github.io/unity-framework-docs/uiandsettings/changelog.html",
+  "licensesUrl": "https://github.com/mroshaw/ui-and-settings/blob/main/LICENSE",
   "samples": [
     {
       "displayName": "Demo Scenes",

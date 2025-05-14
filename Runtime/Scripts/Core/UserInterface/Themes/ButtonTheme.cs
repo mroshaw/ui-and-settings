@@ -6,7 +6,6 @@ using DaftAppleGames.Attributes;
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -19,8 +18,8 @@ namespace DaftAppleGames.UserInterface.Themes
     [CreateAssetMenu(fileName = "ButtonTheme", menuName = "Daft Apple Games/User Interface/Button Theme")]
     public class ButtonTheme : SelectableTheme
     {
-        [BoxGroup("Image")] public Sprite imageSprite;
-        [BoxGroup("Text")] public TextTheme buttonTextTheme;
+        [BoxGroup("Image")] [SerializeField] private Sprite imageSprite;
+        [BoxGroup("Text")] [SerializeField] private TextTheme buttonTextTheme;
 
         public override void Apply(Selectable selectable)
         {

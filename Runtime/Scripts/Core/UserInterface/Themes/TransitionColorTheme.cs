@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace DaftAppleGames.UserInterface.Themes
 {
+    /// <summary>
+    /// ScriptableObject class for storing presets of the standard Unity UI color properties
+    /// </summary>
     [CreateAssetMenu(fileName = "UserInterfaceColorTheme", menuName = "Daft Apple Games/User Interface/Color Theme")]
     public class TransitionColorTheme : ScriptableObject
     {

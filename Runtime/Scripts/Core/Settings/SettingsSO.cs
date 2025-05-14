@@ -12,7 +12,6 @@ namespace DaftAppleGames.Settings
     [CreateAssetMenu(fileName = "SettingsSO", menuName = "Daft Apple Games/Settings/Settings SO", order = 1)]
     public class SettingsSO : ScriptableObject
     {
-        #region Public/serializable properties
         [BoxGroup("Behaviour")] [SerializeField] private bool loadOnStart = true;
         [BoxGroup("Settings")] [SerializeField] private List<BoolSetting> boolSettings;
         [BoxGroup("Settings")] [SerializeField] private List<FloatSetting> floatSettings;
@@ -20,30 +19,22 @@ namespace DaftAppleGames.Settings
         [BoxGroup("Settings")] [SerializeField] private List<OptionSetting> optionSettings;
 
         private bool _isInitialized = false;
-        private List<Setting> _allSettings = new List<Setting>();
+        private List<Setting> _allSettings = new();
 
-        #endregion
-        #region Unity events
-        private void OnEnable()
-        {
-
-        }
-
-        #endregion
-        #region Class methods
         internal void Initialise(bool forceReinitialise = false)
         {
             if (_isInitialized)
             {
                 return;
             }
+
             _allSettings = GetAllSettings();
             _isInitialized = true;
         }
 
         private List<Setting> GetAllSettings()
         {
-            List<Setting> allSettings = new List<Setting>();
+            List<Setting> allSettings = new();
             allSettings.AddRange(boolSettings);
             allSettings.AddRange(floatSettings);
             allSettings.AddRange(intSettings);
@@ -86,6 +77,7 @@ namespace DaftAppleGames.Settings
                     return setting;
                 }
             }
+
             return null;
         }
 
@@ -99,6 +91,7 @@ namespace DaftAppleGames.Settings
                 Debug.Log("Notify Listeners is refreshing the settings...");
                 Initialise();
             }
+
             foreach (Setting setting in _allSettings)
             {
                 if (setting is BoolSetting boolSetting)
@@ -115,11 +108,11 @@ namespace DaftAppleGames.Settings
                 {
                     optionSetting.valueChangedEvent.Invoke(optionSetting.Value);
                 }
+
                 if (setting is IntSetting intSetting)
                 {
                     intSetting.valueChangedEvent.Invoke(intSetting.Value);
                 }
-
             }
         }
 
@@ -138,7 +131,7 @@ namespace DaftAppleGames.Settings
 
         internal void LoadAndApplySettings()
         {
-            foreach(Setting setting in _allSettings)
+            foreach (Setting setting in _allSettings)
             {
                 setting.LoadAndApply();
             }
@@ -146,7 +139,7 @@ namespace DaftAppleGames.Settings
 
         internal void LoadSettings()
         {
-            foreach(Setting setting in _allSettings)
+            foreach (Setting setting in _allSettings)
             {
                 setting.Load();
             }
@@ -154,7 +147,7 @@ namespace DaftAppleGames.Settings
 
         internal void ApplySettings()
         {
-            foreach(Setting setting in _allSettings)
+            foreach (Setting setting in _allSettings)
             {
                 setting.Apply();
             }
@@ -162,12 +155,10 @@ namespace DaftAppleGames.Settings
 
         internal void SaveSettings()
         {
-            foreach(Setting setting in _allSettings)
+            foreach (Setting setting in _allSettings)
             {
                 setting.Save();
             }
         }
-
-        #endregion
     }
 }

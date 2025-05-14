@@ -4,12 +4,13 @@ using Sirenix.OdinInspector;
 using DaftAppleGames.Attributes;
 #endif
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Audio;
 
 namespace DaftAppleGames.UserInterface.Themes
 {
+    /// <summary>
+    /// Base scriptable object for UI theme elements
+    /// </summary>
     [Serializable]
     public class ElementTheme : ScriptableObject
     {

@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace DaftAppleGames.UserInterface.Themes
 {
+    /// <summary>
+    /// ScriptableObject class for storing presets of the standard Unity UI transition sprite properties
+    /// </summary>
     [CreateAssetMenu(fileName = "SpriteTheme", menuName = "Daft Apple Games/User Interface/Sprite Theme")]
     public class TransitionSpriteTheme : ScriptableObject
     {

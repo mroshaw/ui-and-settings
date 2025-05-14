@@ -10,34 +10,39 @@ using TMPro;
 
 namespace DaftAppleGames.UserInterface
 {
+    /// <summary>
+    /// Component used to provide a "Notification" that fades in and out
+    /// </summary>
     public class NotificationPanel : MonoBehaviour
     {
-        #region Class Variables
         [BoxGroup("UI Settings")] [SerializeField] private TMP_Text notificationText;
         [BoxGroup("Fade Settings")] [SerializeField] private float notificationVisibleTime = 2.0f;
         [BoxGroup("Fade Settings")] [SerializeField] private float notificationFadeTime = 2.0f;
         private Color _visibleColor;
         private Color _hiddenColor;
 
-        private Queue<string> _notificationQueue = new();
+        private readonly Queue<string> _notificationQueue = new();
         private bool _isShowingNotification;
-        #endregion
 
-        #region Startup
         private void Awake()
         {
             Color textColor = notificationText.color;
             _visibleColor = new Color(textColor.r, textColor.g, textColor.b, 1);
             _hiddenColor = new Color(textColor.r, textColor.g, textColor.b, 0);
         }
-        #endregion
 
-        #region Class methods
+
+        /// <summary>
+        /// Adds a notification into the queue
+        /// </summary>
         public void Notify(string message)
         {
             _notificationQueue.Enqueue(message);
         }
 
+        /// <summary>
+        /// Check to see if there are notifications in the queue and show them.
+        /// </summary>
         private void Update()
         {
             if (_notificationQueue.Count == 0 || _isShowingNotification)
@@ -51,7 +56,6 @@ namespace DaftAppleGames.UserInterface
         /// <summary>
         /// Show the current notification queue, fade in and out
         /// </summary>
-        /// <returns></returns>
         private IEnumerator NotifyFade(string message)
         {
             _isShowingNotification = true;
@@ -84,6 +88,5 @@ namespace DaftAppleGames.UserInterface
 
             _isShowingNotification = false;
         }
-        #endregion
     }
 }

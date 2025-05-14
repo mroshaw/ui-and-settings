@@ -2,7 +2,7 @@
 namespace DaftAppleGames.UserInterface
 {
     /// <summary>
-    /// Simple Interface for all UI controllers
+    /// Simple Interface for all UI Windows
     /// </summary>
     public interface IUiWindow
     {

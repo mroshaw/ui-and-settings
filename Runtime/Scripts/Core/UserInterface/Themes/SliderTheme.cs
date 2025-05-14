@@ -4,9 +4,7 @@ using Sirenix.OdinInspector;
 using DaftAppleGames.Attributes;
 #endif
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.Themes
@@ -15,9 +13,9 @@ namespace DaftAppleGames.UserInterface.Themes
     [CreateAssetMenu(fileName = "SliderTheme", menuName = "Daft Apple Games/User Interface/Slider Theme")]
     public class SliderTheme : SelectableTheme
     {
-        [BoxGroup("Image")] public Sprite sliderBackgroundSprite;
-        [BoxGroup("Image")] public Sprite sliderPopulatedBackgroundSprite;
-        [BoxGroup("Image")] public Sprite sliderHandleSprite;
+        [BoxGroup("Image")] [SerializeField] private Sprite sliderBackgroundSprite;
+        [BoxGroup("Image")] [SerializeField] private Sprite sliderPopulatedBackgroundSprite;
+        [BoxGroup("Image")] [SerializeField] private Sprite sliderHandleSprite;
 
         public override void Apply(Selectable selectable)
         {

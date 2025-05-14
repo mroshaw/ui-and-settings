@@ -13,9 +13,8 @@ namespace DaftAppleGames.UserInterface.Themes
     [CreateAssetMenu(fileName = "ToggleTheme", menuName = "Daft Apple Games/User Interface/Toggle Theme")]
     public class ToggleTheme : SelectableTheme
     {
-        [BoxGroup("Image")] public Sprite checkMarkSprite;
-        [BoxGroup("Image")] public Sprite checkMarkBackgroundSprite;
-        [BoxGroup("Text")] public TextTheme labelTextTheme;
+        [BoxGroup("Image")] [SerializeField] private Sprite checkMarkSprite;
+        [BoxGroup("Image")] [SerializeField] private Sprite checkMarkBackgroundSprite;
 
         public override void Apply(Selectable selectable)
         {

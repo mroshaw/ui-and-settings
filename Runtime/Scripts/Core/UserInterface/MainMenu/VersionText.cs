@@ -8,6 +8,10 @@ using TMPro;
 
 namespace DaftAppleGames.UserInterface.MainMenu
 {
+    /// <summary>
+    /// Simple Component to display the application version text
+    /// in a TMP Text UI control
+    /// </summary>
     [RequireComponent(typeof(TMP_Text))]
     public class VersionText : MonoBehaviour
     {

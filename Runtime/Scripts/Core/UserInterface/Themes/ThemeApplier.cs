@@ -1,37 +1,29 @@
 using DaftAppleGames.Attributes;
-using DaftAppleGames.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.Themes
 {
+    /// <summary>
+    /// Base class for classes that apply an element of the overall theme
+    /// </summary>
     public abstract class ThemeApplier : MonoBehaviour
     {
-        [BoxGroup("Settings")] [SerializeField] ThemeControlSubType controlSubType;
+        [BoxGroup("Settings")] [SerializeField] private ThemeControlSubType controlSubType;
         private ElementTheme _elementTheme;
 
-        [SerializeField] private ThemeManager themeManager;
+        [SerializeField] private ThemeController themeController;
         private AudioSource _audioSource;
-
-        protected Selectable Selectable { get; set;  }
-        protected TMP_Text Text { get; set;  }
-        protected bool IsSelectable { get; private set; }
-        protected bool IsText { get; private set; }
 
         private void Awake()
         {
-            _audioSource = themeManager.GetComponent<AudioSource>();
-            Selectable = GetComponent<Selectable>();
-            IsSelectable = Selectable != null;
-
-            Text = GetComponent<TMP_Text>();
-            IsText = Text != null;
+            _audioSource = themeController.GetComponent<AudioSource>();
         }
 
-        public void SetTheme(Theme theme, ThemeManager newThemeManager)
+        public void SetTheme(Theme theme, ThemeController newThemeController)
         {
-            themeManager = newThemeManager;
+            themeController = newThemeController;
 #if UNITY_EDITOR
             UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(this);
             UnityEditor.EditorUtility.SetDirty(this);

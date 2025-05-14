@@ -13,17 +13,19 @@ namespace DaftAppleGames.UserInterface.Themes
     [Serializable]
     public class SelectableTheme : ElementTheme
     {
-        [BoxGroup("Image")] public bool useSpritesForTransition = true;
-        [BoxGroup("Settings")] public TransitionColorTheme transitionColorTheme;
-        [BoxGroup("Settings")] public TransitionSpriteTheme transitionSpriteTheme;
-        [BoxGroup("Settings")] public AudioTheme baseAudioTheme;
+        [BoxGroup("Image")] [SerializeField] private bool useSpritesForTransition = true;
+        [BoxGroup("Settings")] [SerializeField] private TransitionColorTheme transitionColorTheme;
+        [BoxGroup("Settings")] [SerializeField] private TransitionSpriteTheme transitionSpriteTheme;
+        [BoxGroup("Settings")] [SerializeField] private AudioTheme baseAudioTheme;
+
+        internal AudioTheme BaseAudioTheme => baseAudioTheme;
 
         private AudioSource _audioSource;
 
         public virtual void Apply(Selectable selectable)
         {
             _audioSource = selectable.EnsureComponent<AudioSource>();
-            _audioSource.outputAudioMixerGroup = baseAudioTheme.mixerGroup;
+            _audioSource.outputAudioMixerGroup = baseAudioTheme.MixerGroup;
 
             ApplyTransitions(selectable);
 #if UNITY_EDITOR

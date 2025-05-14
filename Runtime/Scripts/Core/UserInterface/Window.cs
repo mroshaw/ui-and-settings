@@ -21,8 +21,8 @@ namespace DaftAppleGames.UserInterface
         [BoxGroup("Window UI Settings")] [SerializeField] private GameObject startSelectedGameObject;
         [BoxGroup("Window UI Settings")] [SerializeField] private float fadeTimeInSeconds=2.0f;
         [BoxGroup("Debug")] [SerializeField] private bool isUiOpen;
-        [FoldoutGroup("Show Events")] [SerializeField] private UnityEvent onOpenEvent;
-        [FoldoutGroup("Hide Events")] [SerializeField] private UnityEvent onCloseEvent;
+        [FoldoutGroup("Show Events")] [SerializeField] public UnityEvent onOpenEvent;
+        [FoldoutGroup("Hide Events")] [SerializeField] public UnityEvent onCloseEvent;
 
         public bool IsUiOpen => isUiOpen;
 
@@ -34,7 +34,6 @@ namespace DaftAppleGames.UserInterface
 
         private CanvasGroup _uiCanvasGroup;
 
-        #region Startup
         protected virtual void OnEnable()
         {
             // Subscribe to input changed
@@ -70,9 +69,9 @@ namespace DaftAppleGames.UserInterface
         public virtual void Start()
         {
             // Register with controller
-            if (WindowController.Instance)
+            if (WindowManager.Instance)
             {
-                WindowController.Instance.RegisterUiWindow(this);
+                WindowManager.Instance.RegisterUiWindow(this);
             }
 
             if (startSelectedGameObject && !EventSystem.current.firstSelectedGameObject)
@@ -86,13 +85,11 @@ namespace DaftAppleGames.UserInterface
 
         private void OnDestroy()
         {
-            if (WindowController.Instance)
+            if (WindowManager.Instance)
             {
-                WindowController.Instance.UnRegisterUiWindow(this);
+                WindowManager.Instance.UnRegisterUiWindow(this);
             }
         }
-
-        #endregion
 
         private void ControlSchemeChangedHandler(PlayerInput playerInput)
         {
@@ -144,7 +141,7 @@ namespace DaftAppleGames.UserInterface
             SetUiState(true, true);
         }
 
-        public virtual void Close()
+        protected virtual void Close()
         {
             if (_uiCanvasGroup)
             {
@@ -210,7 +207,7 @@ namespace DaftAppleGames.UserInterface
             else
             {
                 // Restore cursor state, if all windows closed
-                if (!WindowController.Instance.IsAnyUiOpen)
+                if (!WindowManager.Instance.IsAnyUiOpen)
                 {
                     Cursor.visible = false;
                     Cursor.lockState = CursorLockMode.None;

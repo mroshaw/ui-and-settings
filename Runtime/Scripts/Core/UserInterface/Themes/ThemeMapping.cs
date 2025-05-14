@@ -8,11 +8,14 @@ using UnityEngine;
 
 namespace DaftAppleGames.UserInterface.Themes
 {
+    /// <summary>
+    /// Simple class that allows mapping of a ControlSubType to an Element Theme
+    /// </summary>
     [Serializable]
     public class ThemeMapping
     {
         public ThemeControlSubType themeControlSubType;
-        public ElementTheme elementTheme;
+        [InlineEditor] public ElementTheme elementTheme;
 
         public ThemeMapping(ThemeControlSubType subType)
         {
