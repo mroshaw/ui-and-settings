@@ -4,6 +4,9 @@
   "displayName": "Daft Apple UI and Settings",
   "description": "Base UI features and game settings functionality",
   "unity": "6000.0",
+  "dependencies": {
+    "com.unity.inputsystem": "1.14.0"
+  },
   "documentationUrl": "https://mroshaw.github.io/unity-framework-docs/uiandsettings",
   "changelogUrl": "https://mroshaw.github.io/unity-framework-docs/uiandsettings/changelog.html",
   "licensesUrl": "https://github.com/mroshaw/ui-and-settings/blob/main/LICENSE",
