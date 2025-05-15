@@ -14,7 +14,7 @@ namespace DaftAppleGames.Settings
     public class SettingsApplier : MonoBehaviour
     {
         #region Class Variables
-        [BoxGroup("Settings")] [SerializeField] private SettingsSO settings;
+        [BoxGroup("Settings")] [SerializeField] private SettingsList settings;
         [BoxGroup("Behaviour")] [SerializeField] private bool applyOnAwake = true;
         [BoxGroup("Behaviour")] [SerializeField] private bool audioMixerMuteOnAwake = true;
         [BoxGroup("Behaviour")] [SerializeField] private AudioMixer mixer;

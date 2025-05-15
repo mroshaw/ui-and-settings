@@ -11,13 +11,8 @@ namespace DaftAppleGames.Settings
 {
     public class SettingsManager : MonoBehaviour
     {
-        #region Class Variables
-
-        [BoxGroup("Settings")] [SerializeField] private SettingsSO settings;
+        [BoxGroup("Settings")] [SerializeField] private SettingsList settings;
         [BoxGroup("Settings")] [SerializeField] private bool notifyListenersOnStart = true;
-        #endregion
-
-        #region Startup
 
         private void Awake()
         {
@@ -28,13 +23,9 @@ namespace DaftAppleGames.Settings
         {
             if (notifyListenersOnStart)
             {
-                Debug.Log("Settings Manager - Notifying Listeners");
                 settings.NotifyListeners();
             }
         }
-        #endregion
-
-        #region Class methods
 
         internal void RefreshSettings()
         {
@@ -80,6 +71,5 @@ namespace DaftAppleGames.Settings
         {
             return settings.GetAnySetting(settingId);
         }
-        #endregion
     }
 }

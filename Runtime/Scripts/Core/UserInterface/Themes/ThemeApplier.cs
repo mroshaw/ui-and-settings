@@ -1,7 +1,8 @@
 using DaftAppleGames.Attributes;
-using TMPro;
+using DaftAppleGames.Extensions;
+using UnityEditor.Events;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace DaftAppleGames.UserInterface.Themes
 {
@@ -18,7 +19,22 @@ namespace DaftAppleGames.UserInterface.Themes
 
         private void Awake()
         {
-            _audioSource = themeController.GetComponent<AudioSource>();
+            if (!themeController)
+            {
+                Debug.Log($"Theme Controller not set on ThemeApplier: {gameObject.name}");
+                return;
+            }
+
+            _audioSource = themeController.EnsureComponent<AudioSource>();
+        }
+
+        internal void SetThemeController(ThemeController newThemeController)
+        {
+            themeController = newThemeController;
+#if UNITY_EDITOR
+            UnityEditor.EditorUtility.SetDirty(this);
+            UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(this);
+#endif
         }
 
         public void SetTheme(Theme theme, ThemeController newThemeController)
@@ -35,9 +51,22 @@ namespace DaftAppleGames.UserInterface.Themes
 
         protected abstract void ApplyTheme(ElementTheme theme);
 
+
         protected void PlayClip(AudioClip clip)
         {
             _audioSource.PlayOneShot(clip);
+        }
+
+
+        protected void RemoveNamedPersistentListener(UnityEventBase unityEvent, string methodName)
+        {
+            for (int i = unityEvent.GetPersistentEventCount() - 1; i >= 0; i--)
+            {
+                if (unityEvent.GetPersistentMethodName(i) == methodName && unityEvent.GetPersistentTarget(i) == this)
+                {
+                    UnityEventTools.RemovePersistentListener(unityEvent, i);
+                }
+            }
         }
     }
 }

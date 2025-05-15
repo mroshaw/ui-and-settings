@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DaftAppleGames.Core;
 using UnityEngine;
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -9,10 +10,9 @@ using DaftAppleGames.Attributes;
 
 namespace DaftAppleGames.Settings
 {
-    [CreateAssetMenu(fileName = "SettingsSO", menuName = "Daft Apple Games/Settings/Settings SO", order = 1)]
-    public class SettingsSO : ScriptableObject
+    [CreateAssetMenu(fileName = "SettingsList", menuName = "Daft Apple Games/Settings/Settings List", order = 1)]
+    public class SettingsList : EnhancedScriptableObject
     {
-        [BoxGroup("Behaviour")] [SerializeField] private bool loadOnStart = true;
         [BoxGroup("Settings")] [SerializeField] private List<BoolSetting> boolSettings;
         [BoxGroup("Settings")] [SerializeField] private List<FloatSetting> floatSettings;
         [BoxGroup("Settings")] [SerializeField] private List<IntSetting> intSettings;

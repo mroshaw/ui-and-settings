@@ -28,7 +28,7 @@ namespace DaftAppleGames.UserInterface.Themes
             {
                 return;
             }
-            Debug.Log($"Applying theme element {this} to button {button.name}");
+            // Debug.Log($"Applying theme element {this} to button {button.name}");
 
             // Apply text
             TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>(true);
@@ -42,7 +42,6 @@ namespace DaftAppleGames.UserInterface.Themes
             }
 
 
-
 #if UNITY_EDITOR
             if (UnityEditor.PrefabUtility.IsPartOfNonAssetPrefabInstance(button))
             {
@@ -54,7 +53,6 @@ namespace DaftAppleGames.UserInterface.Themes
                 UnityEditor.EditorUtility.SetDirty(button.gameObject);
             }
 #endif
-
         }
     }
 }

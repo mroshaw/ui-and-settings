@@ -20,7 +20,7 @@ namespace DaftAppleGames.UserInterface.Themes
 
         public void Apply(TMP_Text text)
         {
-            Debug.Log($"Applying theme element {this} to text {text.name}");
+            // Debug.Log($"Applying theme element {this} to text {text.name}");
             text.font = font;
             text.color = textColor;
             text.fontSize = size;

@@ -14,9 +14,9 @@ namespace DaftAppleGames.UserInterface.Themes
     public class SelectableTheme : ElementTheme
     {
         [BoxGroup("Image")] [SerializeField] private bool useSpritesForTransition = true;
-        [BoxGroup("Settings")] [SerializeField] private TransitionColorTheme transitionColorTheme;
-        [BoxGroup("Settings")] [SerializeField] private TransitionSpriteTheme transitionSpriteTheme;
-        [BoxGroup("Settings")] [SerializeField] private AudioTheme baseAudioTheme;
+        [InlineEditor] [BoxGroup("Settings")] [SerializeField] private TransitionColorTheme transitionColorTheme;
+        [InlineEditor] [BoxGroup("Settings")] [SerializeField] private TransitionSpriteTheme transitionSpriteTheme;
+        [InlineEditor] [BoxGroup("Settings")] [SerializeField] private AudioTheme baseAudioTheme;
 
         internal AudioTheme BaseAudioTheme => baseAudioTheme;
 
@@ -39,7 +39,6 @@ namespace DaftAppleGames.UserInterface.Themes
             }
 #endif
         }
-
 
 
         protected void ApplyTransitions(Selectable selectable)
@@ -70,7 +69,6 @@ namespace DaftAppleGames.UserInterface.Themes
                     fadeDuration = transitionColorTheme.fadeDuration
                 };
                 selectable.colors = newColorBlock;
-
             }
         }
     }

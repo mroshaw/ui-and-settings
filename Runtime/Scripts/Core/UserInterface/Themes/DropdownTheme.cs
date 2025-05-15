@@ -32,7 +32,7 @@ namespace DaftAppleGames.UserInterface.Themes
                 return;
             }
 
-            Debug.Log($"Applying theme element {this} to button {dropdown.name}");
+            // Debug.Log($"Applying theme element {this} to dropdown {dropdown.name}");
 
             // Apply Dropdown styling
             captionTextTheme.Apply(dropdown.captionText);
@@ -87,7 +87,6 @@ namespace DaftAppleGames.UserInterface.Themes
                 UnityEditor.EditorUtility.SetDirty(dropdown.gameObject);
             }
 #endif
-
         }
     }
 }

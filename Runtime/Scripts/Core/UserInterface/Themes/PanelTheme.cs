@@ -17,10 +17,10 @@ namespace DaftAppleGames.UserInterface.Themes
     {
         [BoxGroup("Background")] [SerializeField] private Sprite backgroundSprite;
         [BoxGroup("Background")] [SerializeField] private Color backgroundColor;
-        
+
         public void Apply(CanvasRenderer canvasRenderer)
         {
-            Debug.Log($"Applying theme element {this} to panel {canvasRenderer.name}");
+            // Debug.Log($"Applying theme element {this} to panel {canvasRenderer.name}");
 
             // Apply window theme
             Image windowImage = canvasRenderer.GetComponent<Image>();

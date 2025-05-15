@@ -17,7 +17,7 @@ namespace DaftAppleGames.UserInterface.Themes
     /// </summary>
     public class ThemeController : MonoBehaviour
     {
-        [BoxGroup("Theme Settings")] [SerializeField] private Theme theme;
+        [InlineEditor] [BoxGroup("Theme Settings")] [SerializeField] private Theme theme;
         [BoxGroup("Theme Settings")] [SerializeField] private bool applyThemeAtStart;
         [BoxGroup("Controls")] [SerializeField] private ThemeApplier[] themeAppliers;
 
@@ -39,17 +39,29 @@ namespace DaftAppleGames.UserInterface.Themes
                     Debug.LogError($"Theme Applier is null on {applier.transform.parent.name}");
                     continue;
                 }
+
                 applier.SetTheme(theme, this);
             }
+
+            Debug.Log($"Applied Theme: {theme.name} to {themeAppliers.Length} UI controls");
         }
 
         [Button("Refresh Theme Appliers")]
         private void RefreshThemeAppliers()
         {
             themeAppliers = GetComponentsInChildren<ThemeApplier>(true);
+            InitThemeAppliers();
         }
 
-        #if UNITY_EDITOR
+        private void InitThemeAppliers()
+        {
+            foreach (ThemeApplier applier in themeAppliers)
+            {
+                applier.SetThemeController(this);
+            }
+        }
+
+#if UNITY_EDITOR
         [Button("Remove All Persistent Listeners")]
         private void ClearHandlers()
         {
@@ -71,6 +83,6 @@ namespace DaftAppleGames.UserInterface.Themes
                 Debug.Log($"Removed {count} listeners");
             }
         }
-        #endif
+#endif
     }
 }

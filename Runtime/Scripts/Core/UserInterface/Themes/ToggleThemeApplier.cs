@@ -1,18 +1,49 @@
 using TMPro;
+using UnityEditor;
+using UnityEditor.Events;
+using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.Themes
 {
-    public class ToggleThemeApplier : ThemeApplier
+    public class ToggleThemeApplier : SelectableThemeApplier
     {
+        [HideInInspector] [SerializeField] private ToggleTheme toggleTheme;
+        [HideInInspector] [SerializeField] private Toggle toggle;
+
         protected override void ApplyTheme(ElementTheme elementTheme)
         {
-            if (elementTheme is not ToggleTheme toggleTheme)
+            base.ApplyTheme(elementTheme);
+
+            if (elementTheme is not ToggleTheme newToggleTheme)
             {
                 return;
             }
-            Toggle toggle = GetComponent<Toggle>();
+
+            toggleTheme = newToggleTheme;
+            toggle = GetComponent<Toggle>();
             toggleTheme.Apply(toggle);
+
+            AddAudioListeners();
+        }
+
+        private void AddAudioListeners()
+        {
+#if UNITY_EDITOR
+            RemoveNamedPersistentListener(toggle.onValueChanged, nameof(ClickHandler));
+            UnityEventTools.AddPersistentListener(toggle.onValueChanged, ClickHandler);
+            EditorUtility.SetDirty(toggle);
+            PrefabUtility.RecordPrefabInstancePropertyModifications(toggle);
+#else
+            _toggle.onValueChanged.RemoveListener(ClickHandler);
+            _toggle.onValueChanged.AddListener(ClickHandler);
+#endif
+        }
+
+        private void ClickHandler(bool arg0)
+        {
+            PlayClip(toggleTheme.BaseAudioTheme.ClickedClip);
         }
     }
 }

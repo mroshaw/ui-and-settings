@@ -1,45 +1,39 @@
-using TMPro;
 using UnityEditor;
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor.Events;
 #endif
-using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.Themes
 {
-    public class ButtonThemeApplier : ThemeApplier, ISelectHandler
+    public class ButtonThemeApplier : SelectableThemeApplier
     {
-        private Button _button;
+        [HideInInspector] [SerializeField] private Button button;
         [HideInInspector] [SerializeField] private ButtonTheme buttonTheme;
+
         protected override void ApplyTheme(ElementTheme elementTheme)
         {
+            base.ApplyTheme(elementTheme);
+
             if (elementTheme is not ButtonTheme newButtonTheme)
             {
                 return;
             }
 
-            this.buttonTheme = newButtonTheme;
-            Button button = GetComponent<Button>();
-            _button = button;
+            buttonTheme = newButtonTheme;
+            button = GetComponent<Button>();
 
-#if UNITY_EDITOR
-            EditorUtility.SetDirty(this);
-            PrefabUtility.RecordPrefabInstancePropertyModifications(this);
-#endif
-
-            newButtonTheme.Apply(button);
-            ApplyAudioTheme();
+            AddAudioListeners();
         }
 
-        protected virtual void ApplyAudioTheme()
+        private void AddAudioListeners()
         {
 #if UNITY_EDITOR
-            UnityEventTools.RemovePersistentListener(_button.onClick, PlayClick);
-            UnityEventTools.AddPersistentListener(_button.onClick, PlayClick);
-            EditorUtility.SetDirty(_button);
-            PrefabUtility.RecordPrefabInstancePropertyModifications(_button);
+            UnityEventTools.RemovePersistentListener(button.onClick, PlayClick);
+            UnityEventTools.AddPersistentListener(button.onClick, PlayClick);
+            EditorUtility.SetDirty(button);
+            PrefabUtility.RecordPrefabInstancePropertyModifications(button);
 #else
             _button.onClick.RemoveListener(PlayClick);
             _button.onClick.AddListener(PlayClick);
@@ -49,11 +43,6 @@ namespace DaftAppleGames.UserInterface.Themes
         private void PlayClick()
         {
             PlayClip(buttonTheme.BaseAudioTheme.ClickedClip);
-        }
-
-        public void OnSelect(BaseEventData eventData)
-        {
-            // PlayClip(_buttonTheme.baseAudioTheme.selectedClip);
         }
     }
 }
