@@ -1,6 +1,6 @@
 {
   "name": "com.daftapplegames.ui-and-settings",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "displayName": "Daft Apple UI and Settings",
   "description": "Base UI features and game settings functionality",
   "unity": "6000.0",
@@ -12,17 +12,19 @@
   "licensesUrl": "https://github.com/mroshaw/ui-and-settings/blob/main/LICENSE",
   "samples": [
     {
-      "displayName": "Demo Scenes",
-      "description": "Unity 6 HDRP scenes demonstrating the features of the package.",
+      "displayName": "HDRP Demo Scene",
+      "description": "Unity 6 HDRP scene demonstrating the features of the package.",
       "path": "Samples~/DemoScenes"
     }
   ],
   "keywords": [
-    "Daft Apple Games"
+    "Daft Apple Games",
+    "ui",
+    "settings"
   ],
   "author": {
-    "name": "Oli Ollerenshaw",
+    "name": "Daft Apple Games",
     "email": "oli@mroshaw.co.uk",
-    "url": ""
+    "url": "https://github.com/mroshaw"
   }
 }
