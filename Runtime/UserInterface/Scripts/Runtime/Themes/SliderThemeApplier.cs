@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.Themes
