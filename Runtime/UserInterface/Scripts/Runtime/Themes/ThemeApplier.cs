@@ -1,6 +1,8 @@
 using DaftAppleGames.Attributes;
 using DaftAppleGames.Extensions;
+#if UNITY_EDITOR
 using UnityEditor.Events;
+#endif
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -57,7 +59,8 @@ namespace DaftAppleGames.UserInterface.Themes
             _audioSource.PlayOneShot(clip);
         }
 
-
+#if UNITY_EDITOR
+        
         protected void RemoveNamedPersistentListener(UnityEventBase unityEvent, string methodName)
         {
             for (int i = unityEvent.GetPersistentEventCount() - 1; i >= 0; i--)
@@ -68,5 +71,6 @@ namespace DaftAppleGames.UserInterface.Themes
                 }
             }
         }
+#endif
     }
 }
