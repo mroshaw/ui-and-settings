@@ -28,19 +28,19 @@ namespace DaftAppleGames.UserInterface.MainMenu
         protected override void OnEnable()
         {
             base.OnEnable();
-            startButton.onClick.AddListener(StartButtonClick);
-            settingsButton.onClick.AddListener(SettingsButtonClick);
-            loadButton.onClick.AddListener(LoadButtonClick);
-            exitDesktopButton.onClick.AddListener(ExitButtonClick);
+            startButton?.onClick.AddListener(StartButtonClick);
+            settingsButton?.onClick.AddListener(SettingsButtonClick);
+            loadButton?.onClick.AddListener(LoadButtonClick);
+            exitDesktopButton?.onClick.AddListener(ExitButtonClick);
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            startButton.onClick.RemoveListener(StartButtonClick);
-            settingsButton.onClick.RemoveListener(SettingsButtonClick);
-            loadButton.onClick.RemoveListener(LoadButtonClick);
-            exitDesktopButton.onClick.RemoveListener(ExitButtonClick);
+            startButton?.onClick.RemoveListener(StartButtonClick);
+            settingsButton?.onClick.RemoveListener(SettingsButtonClick);
+            loadButton?.onClick.RemoveListener(LoadButtonClick);
+            exitDesktopButton?.onClick.RemoveListener(ExitButtonClick);
         }
         
         private void StartButtonClick()
