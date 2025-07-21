@@ -1,14 +1,16 @@
+#if DAG_HDRP
 using System;
 using UnityEngine.Rendering.HighDefinition;
 
 namespace DaftAppleGames.Settings
 {
     [Serializable]
-    public class DLSSSettingUI : OptionSettingUI
+    public class FSRSettingUIHDRP : OptionSettingUI
     {
         protected override bool Show()
         {
-            return HDDynamicResolutionPlatformCapabilities.DLSSDetected;
+            return HDDynamicResolutionPlatformCapabilities.FSR2Detected;
         }
     }
 }
+#endif
