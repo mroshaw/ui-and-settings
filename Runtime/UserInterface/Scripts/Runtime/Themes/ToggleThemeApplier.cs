@@ -36,8 +36,8 @@ namespace DaftAppleGames.UserInterface.Themes
             EditorUtility.SetDirty(toggle);
             PrefabUtility.RecordPrefabInstancePropertyModifications(toggle);
 #else
-            _toggle.onValueChanged.RemoveListener(ClickHandler);
-            _toggle.onValueChanged.AddListener(ClickHandler);
+            toggle.onValueChanged.RemoveListener(ClickHandler);
+            toggle.onValueChanged.AddListener(ClickHandler);
 #endif
         }
 

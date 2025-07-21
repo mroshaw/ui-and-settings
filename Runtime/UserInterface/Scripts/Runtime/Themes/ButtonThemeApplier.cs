@@ -35,8 +35,8 @@ namespace DaftAppleGames.UserInterface.Themes
             EditorUtility.SetDirty(button);
             PrefabUtility.RecordPrefabInstancePropertyModifications(button);
 #else
-            _button.onClick.RemoveListener(PlayClick);
-            _button.onClick.AddListener(PlayClick);
+            button.onClick.RemoveListener(PlayClick);
+            button.onClick.AddListener(PlayClick);
 #endif
         }
 
