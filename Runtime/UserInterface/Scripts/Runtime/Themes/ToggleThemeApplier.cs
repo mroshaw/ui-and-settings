@@ -1,8 +1,6 @@
-using TMPro;
 using UnityEditor;
 using UnityEditor.Events;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace DaftAppleGames.UserInterface.Themes
