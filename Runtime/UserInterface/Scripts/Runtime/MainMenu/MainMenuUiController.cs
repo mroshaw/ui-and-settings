@@ -45,23 +45,23 @@ namespace DaftAppleGames.UserInterface.MainMenu
         
         private void StartButtonClick()
         {
-            onStartButtonClickEvent.Invoke();
+            onStartButtonClickEvent?.Invoke();
         }
 
         private void SettingsButtonClick()
         {
             Close();
-            onSettingsButtonClickEvent.Invoke();
+            onSettingsButtonClickEvent?.Invoke();
         }
 
         private void LoadButtonClick()
         {
-            onLoadButtonClickEvent.Invoke();
+            onLoadButtonClickEvent?.Invoke();
         }
 
         private void ExitButtonClick()
         {
-            onExitToDesktopButtonClickEvent.Invoke();
+            onExitToDesktopButtonClickEvent?.Invoke();
         }
     }
 }

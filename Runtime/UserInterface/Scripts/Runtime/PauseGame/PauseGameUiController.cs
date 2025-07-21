@@ -32,34 +32,34 @@ namespace DaftAppleGames.UserInterface.PauseGame
 
         protected override void OnEnable()
         {
-            continueButton.onClick.AddListener(ContinueButtonClick);
-            settingsButton.onClick.AddListener(SettingsButtonClick);
-            loadButton.onClick.AddListener(LoadButtonClick);
-            saveButton.onClick.AddListener(SaveButtonClick);
-            mainMenuButton.onClick.AddListener(MainMenuButtonClick);
-            exitDesktopButton.onClick.AddListener(ExitButtonClick);
+            continueButton?.onClick.AddListener(ContinueButtonClick);
+            settingsButton?.onClick.AddListener(SettingsButtonClick);
+            loadButton?.onClick.AddListener(LoadButtonClick);
+            saveButton?.onClick.AddListener(SaveButtonClick);
+            mainMenuButton?.onClick.AddListener(MainMenuButtonClick);
+            exitDesktopButton?.onClick.AddListener(ExitButtonClick);
         }
 
         protected override void OnDisable()
         {
-            continueButton.onClick.RemoveListener(ContinueButtonClick);
-            settingsButton.onClick.RemoveListener(SettingsButtonClick);
-            loadButton.onClick.RemoveListener(LoadButtonClick);
-            saveButton.onClick.RemoveListener(SaveButtonClick);
-            mainMenuButton.onClick.RemoveListener(MainMenuButtonClick);
-            exitDesktopButton.onClick.RemoveListener(ExitButtonClick);
+            continueButton?.onClick.RemoveListener(ContinueButtonClick);
+            settingsButton?.onClick.RemoveListener(SettingsButtonClick);
+            loadButton?.onClick.RemoveListener(LoadButtonClick);
+            saveButton?.onClick.RemoveListener(SaveButtonClick);
+            mainMenuButton?.onClick.RemoveListener(MainMenuButtonClick);
+            exitDesktopButton?.onClick.RemoveListener(ExitButtonClick);
         }
 
         private void ContinueButtonClick()
         {
             Close();
-            onContinueButtonClickEvent.Invoke();
+            onContinueButtonClickEvent?.Invoke();
         }
 
         private void SettingsButtonClick()
         {
             Close();
-            onSettingsButtonClickEvent.Invoke();
+            onSettingsButtonClickEvent?.Invoke();
         }
 
         private void LoadButtonClick()
