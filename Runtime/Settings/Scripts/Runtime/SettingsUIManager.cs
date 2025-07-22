@@ -14,8 +14,6 @@ namespace DaftAppleGames.Settings
 {
     public class SettingsUIManager : Window
     {
-        #region Class Variables
-
         [BoxGroup("References")] [SerializeField] private SettingsManager settingsManager;
         [BoxGroup("UI Settings")] [SerializeField] private List<SettingUI> settingUis;
         [BoxGroup("UI")] [SerializeField] private Button saveButton;
@@ -23,22 +21,14 @@ namespace DaftAppleGames.Settings
 
         [BoxGroup("UI Events")] public UnityEvent onSaveButtonClickedEvent;
         [BoxGroup("UI Events")] public UnityEvent onCancelButtonClickedEvent;
-
-        #endregion
-
-        #region Startup
-
+        
         public override void Awake()
         {
             base.Awake();
-            Debug.Log("Settings UI - Init UI Mappings and Buttons");
             InitUiMapping();
             InitButtons();
         }
-        #endregion
-
-        #region Class methods
-
+        
 #if UNITY_EDITOR
 
         [Button("Refresh UI Settings")]
@@ -187,6 +177,5 @@ namespace DaftAppleGames.Settings
             boolSetting.valueChangedEvent.RemoveListener(boolSettingUI.SetToggleValue);
             boolSetting.valueChangedEvent.AddListener(boolSettingUI.SetToggleValue);
         }
-        #endregion
     }
 }
