@@ -25,8 +25,6 @@ namespace DaftAppleGames.UserInterface
         [FoldoutGroup("Hide Events")] [SerializeField] public UnityEvent onCloseEvent;
 
         public bool IsUiOpen => isUiOpen;
-
-        private static PlayerInput _playerInput;
         private static string _controlScheme;
 
         private bool _isCursorVisible;
@@ -36,34 +34,15 @@ namespace DaftAppleGames.UserInterface
 
         protected virtual void OnEnable()
         {
-            // Subscribe to input changed
-            StartCoroutine(FindPlayerInputAsync());
         }
 
         protected virtual void OnDisable()
         {
-            if (_playerInput)
-            {
-                _playerInput.controlsChangedEvent.RemoveListener(ControlSchemeChangedHandler);
-            }
         }
-
-        private IEnumerator FindPlayerInputAsync()
-        {
-            while (!_playerInput)
-            {
-                _playerInput = FindFirstObjectByType<PlayerInput>();
-                yield return null;
-            }
-            _playerInput.controlsChangedEvent.RemoveListener(ControlSchemeChangedHandler);
-            _playerInput.controlsChangedEvent.AddListener(ControlSchemeChangedHandler);
-        }
-
+        
         public virtual void Awake()
         {
             _uiCanvasGroup = GetComponent<CanvasGroup>();
-            // Subscribe to input changed
-            StartCoroutine(FindPlayerInputAsync());
         }
 
         public virtual void Start()
@@ -88,18 +67,6 @@ namespace DaftAppleGames.UserInterface
             if (WindowManager.Instance)
             {
                 WindowManager.Instance.UnRegisterUiWindow(this);
-            }
-        }
-
-        private void ControlSchemeChangedHandler(PlayerInput playerInput)
-        {
-            Debug.Log($"Control scheme changed to: {playerInput.currentControlScheme}");
-
-            _controlScheme = playerInput.currentControlScheme;
-
-            if (isUiOpen)
-            {
-                SetCursorState();
             }
         }
 
