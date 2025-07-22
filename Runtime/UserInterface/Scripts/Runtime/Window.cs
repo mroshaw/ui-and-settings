@@ -108,7 +108,7 @@ namespace DaftAppleGames.UserInterface
             SetUiState(true, true);
         }
 
-        protected virtual void Close()
+        public virtual void Close()
         {
             if (_uiCanvasGroup)
             {
