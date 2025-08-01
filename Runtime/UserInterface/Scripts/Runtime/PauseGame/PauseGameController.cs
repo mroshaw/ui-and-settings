@@ -30,7 +30,7 @@ namespace DaftAppleGames.UserInterface.PauseGame
             RefreshPausables();
         }
 
-        public void TogglePauseGame()
+        protected virtual void TogglePauseGame()
         {
             if(IsPaused)
             {
@@ -42,7 +42,7 @@ namespace DaftAppleGames.UserInterface.PauseGame
             }
         }
 
-        public void PauseGame()
+        protected virtual void PauseGame()
         {
             IsPaused = true;
             Time.timeScale = 0.0f;
@@ -50,7 +50,7 @@ namespace DaftAppleGames.UserInterface.PauseGame
             pausedEvent.Invoke();
         }
 
-        public void UnPauseGame()
+        protected virtual void UnPauseGame()
         {
             IsPaused = false;
             Time.timeScale = 1.0f;
@@ -58,12 +58,12 @@ namespace DaftAppleGames.UserInterface.PauseGame
             unPausedEvent.Invoke();
         }
 
-        public void ReturnToMainMenu()
+        protected virtual void ReturnToMainMenu()
         {
             SceneLoaderManager.Instance.LoadMainMenuLoaderScene();
         }
 
-        public void ExitToDesktop()
+        protected virtual void ExitToDesktop()
         {
             Application.Quit();
         }
