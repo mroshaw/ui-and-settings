@@ -1,17 +1,23 @@
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#else
+using DaftAppleGames.Attributes;
+#endif
 
 namespace DaftAppleGames.Settings.Audio
 {
     [Serializable]
     public abstract class MixerGroupVolumeSetting : FloatSetting
     {
+		[BoxGroup("Settings")] [SerializeField] private string audioMixerGroupParameter;
+        [BoxGroup("Settings")] [SerializeField] private AudioMixer audioMixer;
         public override void Apply()
         {
             AudioMixer mixer = GetAudioMixer();
-            string mixerGroupParameter = GetAudioMixerGroupParameter();
-            mixer.SetFloat(mixerGroupParameter, ValueToVolume(Value));
+            mixer.SetFloat(audioMixerGroupParameter, ValueToVolume(Value));
         }
 
         private float ValueToVolume(float value)
@@ -24,8 +30,11 @@ namespace DaftAppleGames.Settings.Audio
             return Mathf.Pow(10f, volume / 20f);
         }
 
-        protected abstract AudioMixer GetAudioMixer();
-        protected abstract string GetAudioMixerGroupParameter();
+        private AudioMixer GetAudioMixer()
+        {
+            return audioMixer;
+        }
+        
         protected override float GetDefault()
         {
             return 1.0f;
