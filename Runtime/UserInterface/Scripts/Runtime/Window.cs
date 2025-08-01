@@ -42,6 +42,8 @@ namespace DaftAppleGames.UserInterface
         
         public virtual void Awake()
         {
+            // Start with UI in specified default state
+            SetUiState(defaultUiState, false);
             _uiCanvasGroup = GetComponent<CanvasGroup>();
         }
 
@@ -57,9 +59,6 @@ namespace DaftAppleGames.UserInterface
             {
                 EventSystem.current.firstSelectedGameObject = startSelectedGameObject;
             }
-
-            // Start with UI in specified default state
-            SetUiState(defaultUiState, false);
         }
 
         private void OnDestroy()
