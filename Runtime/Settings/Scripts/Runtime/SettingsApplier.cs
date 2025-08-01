@@ -13,18 +13,13 @@ namespace DaftAppleGames.Settings
 {
     public class SettingsApplier : MonoBehaviour
     {
-        #region Class Variables
         [BoxGroup("Settings")] [SerializeField] private SettingsList settings;
         [BoxGroup("Behaviour")] [SerializeField] private bool applyOnAwake = true;
+        [BoxGroup("Behaviour")] [SerializeField] private bool applyOnStart = false;
         [BoxGroup("Behaviour")] [SerializeField] private bool audioMixerMuteOnAwake = true;
         [BoxGroup("Behaviour")] [SerializeField] private AudioMixer mixer;
         [BoxGroup("Events")] [SerializeField] public UnityEvent allSettingsAppliedEvent;
-        #endregion
 
-        #region Startup
-        /// <summary>
-        /// Configure the component on awake
-        /// </summary>   
         private void Awake()
         {
             settings.Initialise();
@@ -40,11 +35,18 @@ namespace DaftAppleGames.Settings
             }
         }
 
+        private void Start()
+        {
+            if (applyOnStart)
+            {
+                LoadAndApplySettings();
+            }
+        }
+
         public void LoadAndApplySettings()
         {
             settings.LoadAndApplySettings();
             allSettingsAppliedEvent?.Invoke();
         }
-        #endregion
     }
 }
