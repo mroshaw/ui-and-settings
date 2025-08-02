@@ -32,7 +32,7 @@ namespace DaftAppleGames.UserInterface.PauseGame
 
         protected virtual void TogglePauseGame()
         {
-            if(IsPaused)
+            if (IsPaused)
             {
                 UnPauseGame();
             }
@@ -60,6 +60,7 @@ namespace DaftAppleGames.UserInterface.PauseGame
 
         protected virtual void ReturnToMainMenu()
         {
+            UnPauseGame();
             SceneLoaderManager.Instance.LoadMainMenuLoaderScene();
         }
 
@@ -80,7 +81,6 @@ namespace DaftAppleGames.UserInterface.PauseGame
             {
                 pausable.Pause();
             }
-
         }
 
         private void ResumeAllPausables()
@@ -89,7 +89,6 @@ namespace DaftAppleGames.UserInterface.PauseGame
             {
                 pausable.Resume();
             }
-
         }
     }
 }
